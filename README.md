@@ -28,7 +28,6 @@ Algunos de los tags que han sido seleccionados para la primera version son:
 -Illustration.  
 -News.  
 -Philosophy.  
--Storytelling.  
 -Anime y Manga.(esto se quedara junto, you filthy weeabos)    
 -Writing and Storytelling. (al igual que la etiqueta TV and Movies, esta posiblemente se separe)  
 -Science.   
