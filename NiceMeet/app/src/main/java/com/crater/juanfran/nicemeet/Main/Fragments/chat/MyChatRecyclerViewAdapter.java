@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.crater.juanfran.nicemeet.Main.Fragments.chat.ChatFragment.OnListFragmentInteractionListener;
 import com.crater.juanfran.nicemeet.Main.Fragments.chat.dummy.DummyContent.DummyItem;
+import com.crater.juanfran.nicemeet.R;
 
 import java.util.List;
 
