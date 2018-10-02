@@ -29,6 +29,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.crater.juanfran.nicemeet.login.contract.LoginContract;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +39,22 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends AppCompatActivity implements LoginContract.view {
 
 
+    @Override
+    public void goRegister(String email) {
+
+    }
+
+    @Override
+    public void goMain() {
+
+    }
+
+    @Override
+    public void onError(String error) {
+
+    }
 }
 

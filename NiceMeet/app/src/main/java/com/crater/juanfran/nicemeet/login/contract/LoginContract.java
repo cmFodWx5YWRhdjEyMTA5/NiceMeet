@@ -3,14 +3,16 @@ package com.crater.juanfran.nicemeet.login.contract;
 public interface LoginContract {
     interface view
     {
-
+        void goRegister(String email);
+        void goMain();
+        void onError(String error);
     }
     interface presenter
     {
-
+        void onSignIn(String email, String password);
     }
     interface interactor
     {
-        
+        void SignIn(String email,String password);
     }
 }
