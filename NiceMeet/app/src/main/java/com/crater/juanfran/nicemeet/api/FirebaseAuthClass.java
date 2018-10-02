@@ -31,7 +31,6 @@ public class FirebaseAuthClass {
                             listener.onError();
                         }
 
-                        // ...
                     }
                 });
     }
