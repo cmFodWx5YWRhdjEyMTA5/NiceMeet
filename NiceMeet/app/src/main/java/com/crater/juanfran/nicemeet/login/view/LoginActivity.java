@@ -3,6 +3,7 @@ package com.crater.juanfran.nicemeet.login.view;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -29,7 +30,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.crater.juanfran.nicemeet.Register.RegisterActivity;
 import com.crater.juanfran.nicemeet.login.contract.LoginContract;
+import com.crater.juanfran.nicemeet.utils.ValidatorsClass;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +47,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void goRegister(String email) {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        if(ValidatorsClass.validateEmail(email))
+        {
+            Bundle bundle = new Bundle();
+            bundle.putString("email",email);
+        }
 
     }
 
