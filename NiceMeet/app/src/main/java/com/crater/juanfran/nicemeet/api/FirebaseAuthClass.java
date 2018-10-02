@@ -1,5 +1,6 @@
 package com.crater.juanfran.nicemeet.api;
 
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
@@ -55,5 +56,67 @@ public class FirebaseAuthClass {
         void onError();//TODO Asignar una lista de errores para enviar por el listener
         void onSignUp();
         void onSignIn();
+    }
+    public static MyFirebaseUser AccessUserInfo()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+           MyFirebaseUser myuser= new MyFirebaseUser();
+           myuser.setName(user.getDisplayName());
+           myuser.setEmail(user.getEmail());
+           myuser.setPhotoUrl(user.getPhotoUrl());
+           myuser.setEmailVerified(user.isEmailVerified());
+           myuser.setUid(user.getUid());
+            return myuser;
+        }
+        return null;
+    }
+    static class MyFirebaseUser
+    {
+        String name;
+        String email;
+        Uri photoUrl;
+        boolean emailVerified;
+        String uid;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public Uri getPhotoUrl() {
+            return photoUrl;
+        }
+
+        public void setPhotoUrl(Uri photoUrl) {
+            this.photoUrl = photoUrl;
+        }
+
+        public boolean isEmailVerified() {
+            return emailVerified;
+        }
+
+        public void setEmailVerified(boolean emailVerified) {
+            this.emailVerified = emailVerified;
+        }
+
+        public String getUid() {
+            return uid;
+        }
+
+        public void setUid(String uid) {
+            this.uid = uid;
+        }
     }
 }
