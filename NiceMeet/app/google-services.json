@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "546961075200",
+    "firebase_url": "https://nicemeet-1997.firebaseio.com",
+    "project_id": "nicemeet-1997",
+    "storage_bucket": "nicemeet-1997.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:546961075200:android:a7279568850737ca",
+        "android_client_info": {
+          "package_name": "com.crater.juanfran.nicemeet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "546961075200-mustt0v33ecoihvl2n0fa0s04fnu0rk3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.crater.juanfran.nicemeet",
+            "certificate_hash": "88097f998eb7781c2e2a113f65e037fea2088299"
+          }
+        },
+        {
+          "client_id": "546961075200-8hi4nibbaiisje806v105l1dvt6g6hjq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk4q4CejAGZJmZryc_mH73RVztgwdouI4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "546961075200-8hi4nibbaiisje806v105l1dvt6g6hjq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
