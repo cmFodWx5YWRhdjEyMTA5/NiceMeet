@@ -17,6 +17,7 @@ import com.crater.juanfran.nicemeet.R;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
+    boolean notifications =false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,19 +46,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createFakeNotification() {
-        BottomNavigationMenuView bottomNavigationMenuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
-        View v = bottomNavigationMenuView.getChildAt(1);
-        BottomNavigationItemView itemView = (BottomNavigationItemView) v;
+        if(!notifications) {
+            notifications = true;
+            BottomNavigationMenuView bottomNavigationMenuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+            View v = bottomNavigationMenuView.getChildAt(1);
+            BottomNavigationItemView itemView = (BottomNavigationItemView) v;
 
-        View badge = LayoutInflater.from(this).inflate(R.layout.notification_badge, bottomNavigationMenuView, false);
+            View badge = LayoutInflater.from(this).inflate(R.layout.notification_badge, bottomNavigationMenuView, false);
 
-        itemView.addView(badge);
+            itemView.addView(badge);
+        }
     }
     private void eliminateNotifications() {
-        BottomNavigationMenuView bottomNavigationMenuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
-        View v = bottomNavigationMenuView.getChildAt(1); BottomNavigationItemView itemView = (BottomNavigationItemView) v;
-        itemView.removeViewAt(itemView.getChildCount()-1);
+        if(notifications) {
+            notifications=false;
+            BottomNavigationMenuView bottomNavigationMenuView = (BottomNavigationMenuView) bottomNavigationView.getChildAt(0);
+            View v = bottomNavigationMenuView.getChildAt(1);
+            BottomNavigationItemView itemView = (BottomNavigationItemView) v;
+            itemView.removeViewAt(itemView.getChildCount() - 1);
+        }
+        }
 
     }
-
-}
