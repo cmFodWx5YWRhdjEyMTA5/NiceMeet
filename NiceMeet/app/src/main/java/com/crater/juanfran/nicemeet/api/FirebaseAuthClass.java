@@ -2,7 +2,10 @@ package com.crater.juanfran.nicemeet.api;
 
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
+import com.crater.juanfran.nicemeet.R;
+import com.crater.juanfran.nicemeet.login.view.ForgetActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -14,6 +17,22 @@ import static android.support.constraint.Constraints.TAG;
 public class FirebaseAuthClass {
 
     private static FirebaseAuth mAuth;
+
+    public static void ResetEmail(String email, final FbResetEmailListener listener)
+    {   mAuth =  FirebaseAuth.getInstance();
+        mAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                        listener.onSucces();
+                        } else {
+                            listener.onError();
+                        }
+                    }
+                });
+    }
+
 
     public static void SignUpWithEmail(String email, String password, final FirebaseAuthClass.FbSignUpListener listener) {
         mAuth = FirebaseAuth.getInstance();
@@ -48,6 +67,11 @@ public class FirebaseAuthClass {
                 });
     }
 
+    public interface FbResetEmailListener
+    {
+        void onSucces();
+        void onError();
+    }
     public interface FbSignInListener {
         void onError();//TODO Asignar una lista de errores para enviar por el listener
         void onSignIn();
