@@ -19,4 +19,11 @@
     </string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="errorHappen">Ha ocurrido un error</string>
+    <string name="recoverPassword">¿Ha olvidado su contraseña?</string>
+    <string name="txtV_IfSignUP">¿No esta registrado aún?</string>
+    <string name="btn_SignIn">Iniciar Sesion</string>
+    <string name="btn_Remember">Recordarme</string>
+    <string name="txtV_Password">Contraseña</string>
+    <string name="txtV_User">Email</string>
+    <string name="txtV_SignIn">Iniciar Sesion</string>
 </resources>

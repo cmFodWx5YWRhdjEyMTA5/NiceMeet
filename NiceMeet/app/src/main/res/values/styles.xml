@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,11 +13,39 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.AppBarOverlay" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay" parent="Base.ThemeOverlay.AppCompat.Light" />
 
-    <style name="CookiesDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <style name="CookiesDialogCustom" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:positiveButtonText">#@color/default_dialog_button</item>
+    </style>
+
+    <style name="LoginTheme" parent="AppTheme">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="chb_RememberMe">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:colorAccent">@android:color/darker_gray</item>
+        <item name="android:textColorSecondary">#000000</item>
+    </style>
+
+    <style name="Widget" parent="@android:style/Widget" />
+
+
+    <style name="LoginEditText">
+        <item name="android:padding">10dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:background">@drawable/shapeedtext</item>
+    </style>
+
+    <style name="Widget.Button.Transparent" parent="@android:style/Widget">
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/rounded_corner1</item>
     </style>
 </resources>
