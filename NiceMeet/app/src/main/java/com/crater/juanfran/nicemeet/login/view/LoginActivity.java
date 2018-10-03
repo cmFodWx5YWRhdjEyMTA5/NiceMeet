@@ -69,7 +69,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
             @Override
             public void onClick(View v) {
-                presenter.onSignIn(edtUser.getText().toString(),edtpassword.getText().toString());
+               // presenter.onSignIn(edtUser.getText().toString(),edtpassword.getText().toString());
+                goMain();
             }
         });
         View.OnClickListener clickTemporal = new View.OnClickListener() {

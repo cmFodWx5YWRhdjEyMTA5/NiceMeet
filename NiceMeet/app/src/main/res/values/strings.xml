@@ -26,4 +26,8 @@
     <string name="txtV_Password">Contraseña</string>
     <string name="txtV_User">Email</string>
     <string name="txtV_SignIn">Iniciar Sesion</string>
+    <string name="meetings">Encuentros</string>
+    <string name="chats">Conversaciones</string>
+    <string name="profile">Perfil</string>
+    <string name="settings">Ajustes</string>
 </resources>
