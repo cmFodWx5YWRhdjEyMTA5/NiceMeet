@@ -66,6 +66,7 @@ public class FirebaseAuthClass {
             return myuser;
         }
         return null;
+
     }
     static class MyFirebaseUser
     {
