@@ -15,7 +15,7 @@ public class FirebaseAuthClass {
 
     private static FirebaseAuth mAuth;
 
-    public static void SignUpWithEmail(String email, String password, final FirebaseAuthClass.FbListener listener) {
+    public static void SignUpWithEmail(String email, String password, final FirebaseAuthClass.FbSignUpListener listener) {
         mAuth = FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -32,7 +32,7 @@ public class FirebaseAuthClass {
                 });
     }
 
-    public static void loginWithEmail(String email, String password, final FirebaseAuthClass.FbListener listener) {
+    public static void loginWithEmail(String email, String password, final FirebaseAuthClass.FbSignInListener listener) {
         mAuth = FirebaseAuth.getInstance();
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
@@ -48,10 +48,13 @@ public class FirebaseAuthClass {
                 });
     }
 
-    public interface FbListener {
+    public interface FbSignInListener {
+        void onError();//TODO Asignar una lista de errores para enviar por el listener
+        void onSignIn();
+    }
+    public interface FbSignUpListener {
         void onError();//TODO Asignar una lista de errores para enviar por el listener
         void onSignUp();
-        void onSignIn();
     }
     public static MyFirebaseUser AccessUserInfo()
     {

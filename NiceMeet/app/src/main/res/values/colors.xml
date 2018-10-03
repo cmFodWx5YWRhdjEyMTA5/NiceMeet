@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#6d53ff</color>
+    <color name="colorPrimaryDark">#2727cb</color>
+    <color name="colorAccent">#a681ff</color>
     <color name="grey_200">#EEEEEE</color>
     <color name="colorIndivateTab">#FFFFFF</color>
     <color name="colorGoogle">#e25f43</color>
     <color name="colorFacebook">#3b5998</color>
+    <color name="colorTwitter">#c0deed</color>
 </resources>

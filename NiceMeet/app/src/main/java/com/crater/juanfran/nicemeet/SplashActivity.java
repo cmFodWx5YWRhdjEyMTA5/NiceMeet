@@ -24,6 +24,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onStart();
      FirebaseUser user = mAuth.getCurrentUser();
      updateUI(user);
+     finish();
     }
 
     private void updateUI(FirebaseUser user) {

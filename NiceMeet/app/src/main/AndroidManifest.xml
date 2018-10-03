@@ -29,8 +29,9 @@
         <activity
             android:name=".Register.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Main.Fragments.chat.ChatActivity"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Main.Fragments.chat.ChatActivity" />
+        <activity android:name=".login.view.ForgetActivity"></activity>
     </application>
 
 </manifest>

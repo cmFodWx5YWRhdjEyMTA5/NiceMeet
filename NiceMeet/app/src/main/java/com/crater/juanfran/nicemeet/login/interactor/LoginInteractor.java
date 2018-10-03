@@ -3,7 +3,7 @@ package com.crater.juanfran.nicemeet.login.interactor;
 import com.crater.juanfran.nicemeet.api.FirebaseAuthClass;
 import com.crater.juanfran.nicemeet.login.contract.LoginContract;
 
-public class LoginInteractor implements LoginContract.interactor, FirebaseAuthClass.FbListener {
+public class LoginInteractor implements LoginContract.interactor, FirebaseAuthClass.FbSignInListener {
     private final LoginInteractorListener listener;
 
     public LoginInteractor(LoginInteractorListener listener) {
@@ -20,10 +20,6 @@ public class LoginInteractor implements LoginContract.interactor, FirebaseAuthCl
         listener.onError("TODO");
     }
 
-    @Override
-    public void onSignUp() {
-        //Aqui no entra, hay que buscar como refactorizar esto
-    }
 
     @Override
     public void onSignIn() {

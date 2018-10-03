@@ -6,6 +6,7 @@ public interface LoginContract {
         void goRegister(String email);
         void goMain();
         void onError(String error);
+        void goForget(String email);
     }
     interface presenter
     {
