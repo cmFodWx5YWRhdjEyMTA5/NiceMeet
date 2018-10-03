@@ -15,8 +15,7 @@ import android.widget.TextView;
 
 import com.crater.juanfran.nicemeet.Main.MainActivity;
 import com.crater.juanfran.nicemeet.R;
-import com.crater.juanfran.nicemeet.Register.RegisterActivity;
-import com.crater.juanfran.nicemeet.ThisApplication;
+import com.crater.juanfran.nicemeet.Register.View.RegisterActivity;
 import com.crater.juanfran.nicemeet.login.contract.LoginContract;
 import com.crater.juanfran.nicemeet.login.presenter.LoginPresenter;
 import com.crater.juanfran.nicemeet.utils.ValidatorsClass;

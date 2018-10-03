@@ -30,4 +30,16 @@
     <string name="chats">Conversaciones</string>
     <string name="profile">Perfil</string>
     <string name="settings">Ajustes</string>
+
+    <!--           -->
+
+    <string name="passwordEmptyError">Contraseña esta vacia</string>
+    <string name="emailEmptyError">Email esta vacio</string>
+    <string name="passwordError">Contraseña no valida</string>
+    <string name="userError">Usuario no valido</string>
+    <string name="firebase_error">Error en Firebase</string>
+    <string name="txvPasswordAgain">Escriba su contraseña de nuevo</string>
+    <string name="btn_SignUp">Registrarse</string>
+    <string name="passwordDifferent">Contraseñas no coinciden</string>
+
 </resources>
