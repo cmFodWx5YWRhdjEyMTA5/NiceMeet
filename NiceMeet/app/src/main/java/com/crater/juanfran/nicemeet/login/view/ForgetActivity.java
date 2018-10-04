@@ -22,8 +22,6 @@ public class ForgetActivity extends AppCompatActivity implements FirebaseAuthCla
 
     private Button btnReset;
 
-    private FirebaseAuth auth;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +29,12 @@ public class ForgetActivity extends AppCompatActivity implements FirebaseAuthCla
         setContentView(R.layout.activity_forget);
         inputEmail = (EditText) findViewById(R.id.email);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuthClass.ResetEmail(inputEmail.getText().toString(),ForgetActivity.this);
+            }
+        });
     }
 
     @Override
