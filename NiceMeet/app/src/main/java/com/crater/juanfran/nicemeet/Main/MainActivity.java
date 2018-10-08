@@ -1,11 +1,13 @@
 package com.crater.juanfran.nicemeet.Main;
 
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +20,7 @@ import com.crater.juanfran.nicemeet.Main.Fragments.profile.ProfileFragment;
 import com.crater.juanfran.nicemeet.Main.Fragments.swipe.SwipeFragment;
 import com.crater.juanfran.nicemeet.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SwipeFragment.SwipeFragmentInteractionListener {
     BottomNavigationView bottomNavigationView;
     FrameLayout frameLayout;
     boolean notifications =false;
@@ -27,37 +29,43 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         frameLayout=findViewById(R.id.framelayu);
-         bottomNavigationView = (BottomNavigationView)
+        bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
          bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
              @Override
              public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                 Fragment fragment = null;
                  switch (item.getItemId()) {
                      case R.id.action_people:
-                         ft.replace(R.id.framelayu, new SwipeFragment());
-                         ft.commit();
+                         fragment= new SwipeFragment();
                          break;
                      case R.id.action_chats:
                          eliminateNotifications();
-                        // ft.replace(R.id.framelayu, new ());
-                        // ft.commit();
+
                          break;
                      case R.id.action_profile:
                          createFakeNotification();
-                         ft.replace(R.id.framelayu, new ProfileFragment());
-                         ft.commit();
+                        fragment= new ProfileFragment();
                          break;
                      case R.id.action_settings:
-                         //ft.replace(R.id.framelayu, new SwipeFragment());
-                         //ft.commit();
+                         
                          break;
                  }
-                 return true;
+                 return loadFragment(fragment);
              }
          });
     }
-
+    private boolean loadFragment(Fragment fragment) {
+        //switching fragment
+        if (fragment != null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.framelayu, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
     private void createFakeNotification() {
         if(!notifications) {
             notifications = true;
@@ -80,4 +88,16 @@ public class MainActivity extends AppCompatActivity {
         }
         }
 
+//SwipeMethods
+    @Override
+    public void onSwipe(String uid) {
+
     }
+
+    @Override
+    public void onClickProfile(String uid) {
+
+    }
+
+
+}

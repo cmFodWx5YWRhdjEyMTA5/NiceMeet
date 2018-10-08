@@ -3,6 +3,7 @@ package com.crater.juanfran.nicemeet.model;
 import com.crater.juanfran.nicemeet.model.Message;
 
 public class User {
+    public String uid;
     public String name;
     public String email;
     public String avata;
@@ -11,6 +12,7 @@ public class User {
 
 
     public User(){
+        uid="0w0";
         status = new Status();
         message = new Message();
         status.isOnline = false;
@@ -19,5 +21,9 @@ public class User {
         message.idSender = "0";
         message.text = "";
         message.timestamp = 0;
+    }
+
+    public String getUid() {
+        return uid;
     }
 }
