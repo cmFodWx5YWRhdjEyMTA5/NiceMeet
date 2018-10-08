@@ -8,15 +8,15 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
-        android:name=".ThisApplication"
+        android:name=".utils.ThisApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Main.MainActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".ui.Main.view.MainActivity" />
+        <activity android:name=".ui.Splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,14 +24,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login.view.LoginActivity"
+            android:name=".ui.login.view.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".Register.View.RegisterActivity"
+            android:name=".ui.Register.View.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Main.Fragments.chat.ChatActivity" />
-        <activity android:name=".login.view.ForgetActivity"></activity>
+        <activity android:name=".ui.Main.view.Fragments.chat.ChatActivity" />
+        <activity android:name=".ui.login.view.ForgetActivity"></activity>
     </application>
 
 </manifest>

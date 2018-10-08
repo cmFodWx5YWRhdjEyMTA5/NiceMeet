@@ -3,7 +3,7 @@ package com.crater.juanfran.nicemeet.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.crater.juanfran.nicemeet.model.User;
+import com.crater.juanfran.nicemeet.db.model.User;
 
 public class SharedPreferenceHelper {
     private static SharedPreferenceHelper instance = null;
