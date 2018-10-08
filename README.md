@@ -5,4 +5,4 @@
 [![GitHub stars](https://img.shields.io/github/stars/C-Rater/NiceMeet.svg)]()    
 ## Introduccion  
 
-NiceMeet es una aplicacion pseudo geosocial para Android que permite a sus usuarios conocer a otros usuarios basandose en sus gustos y aficiones, basandas en una serie de etiquetas. 
+NiceMeet es una aplicacion pseudo geosocial para Android que permite a sus usuarios conocer a otros basandose en sus gustos y aficiones.
