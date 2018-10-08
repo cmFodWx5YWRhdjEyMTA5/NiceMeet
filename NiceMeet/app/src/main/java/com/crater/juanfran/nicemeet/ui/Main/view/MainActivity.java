@@ -15,11 +15,12 @@ import android.widget.FrameLayout;
 import com.crater.juanfran.nicemeet.db.model.User;
 import com.crater.juanfran.nicemeet.ui.Main.contract.MainContract;
 import com.crater.juanfran.nicemeet.ui.Main.presenter.MainPresenter;
+import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.chat.ListChatFragment;
 import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.profile.ProfileFragment;
 import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.swipe.SwipeFragment;
 import com.crater.juanfran.nicemeet.R;
 
-public class MainActivity extends AppCompatActivity implements SwipeFragment.SwipeFragmentInteractionListener, MainContract.view {
+public class MainActivity extends AppCompatActivity implements SwipeFragment.SwipeFragmentInteractionListener,ListChatFragment.OnListChatInteractionListener, MainContract.view {
     BottomNavigationView bottomNavigationView;
     FrameLayout frameLayout;
     MainContract.presenter presenter;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
                          break;
                      case R.id.action_chats:
                          eliminateNotifications();
-
+                         fragment= new ListChatFragment();
                          break;
                      case R.id.action_profile:
                          createFakeNotification();
@@ -102,4 +103,8 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
     }
 
 
+    @Override
+    public void onItemClickInteraction(String uid) {
+        //Abre el chat especifico
+    }
 }

@@ -25,11 +25,6 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
 
     }
 
-    public static SwipeFragment newInstance() {
-
-        SwipeFragment fragment = new SwipeFragment();
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,9 +40,7 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
         cardStackAdapter=new CardStackAdapter(mData,(Context) mListener);
         View view = inflater.inflate(R.layout.fragment_swipe, container, false);
         SwipeStack swipeStack = (SwipeStack) view.findViewById(R.id.swipeStack);
-        swipeStack.setAdapter(
-                cardStackAdapter
-        );
+        swipeStack.setAdapter(cardStackAdapter);
         return view;
     }
 

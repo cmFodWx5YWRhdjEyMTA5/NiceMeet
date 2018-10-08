@@ -46,7 +46,6 @@ public class CardStackAdapter extends BaseAdapter {
         convertView = ((Activity)context).getLayoutInflater().inflate(R.layout.card, parent, false);
         TextView textViewCard = (TextView) convertView.findViewById(R.id.textViewCard);
         textViewCard.setText((CharSequence) listUsers.get(position).getUid());
-
         return convertView;
     }
 }
