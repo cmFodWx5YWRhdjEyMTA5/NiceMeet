@@ -20,6 +20,8 @@ import com.crater.juanfran.nicemeet.ui.login.presenter.LoginPresenter;
 import com.crater.juanfran.nicemeet.utils.DialogsUtils;
 import com.crater.juanfran.nicemeet.utils.ValidatorsClass;
 
+import fr.castorflex.android.circularprogressbar.CircularProgressBar;
+
 public class LoginActivity extends AppCompatActivity implements LoginContract.view {
 
     LoginContract.presenter presenter;
@@ -27,7 +29,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     private EditText edtUser;
     private EditText edtpassword;
     private TextView txtVIfSignUp,txtVPasswordForget;
-    private ProgressBar progressDialog;
+    private CircularProgressBar progressDialog;
     private AlertDialog.Builder alertDig;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     }
 
     private void initUI() {
+        progressDialog=findViewById(R.id.marker_progress);
         edtUser=findViewById(R.id.edT_User);
         edtpassword=findViewById(R.id.edT_Passw);
         txtVIfSignUp=findViewById(R.id.txtVIfSignUp);
@@ -106,16 +109,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void goMain() {
-      //  progressDialog.cancel();
+      progressDialog.setVisibility(View.INVISIBLE);
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
 
     @Override
     public void onError(String error) {
+        progressDialog.setVisibility(View.INVISIBLE);
         alertDig= DialogsUtils.onErrorDialog(this,error);
         alertDig.show();
-     //   progressDialog.cancel();
     }
 
     @Override
@@ -132,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void onStartProgress() {
-  //  progressDialog= DialogsUtils.showProgress(this);
+    progressDialog.setVisibility(View.VISIBLE);
     }
 }
 

@@ -10,13 +10,6 @@ import com.crater.juanfran.nicemeet.R;
 
 public class DialogsUtils
 {
-    public static ProgressBar showProgress(Context context)
-    {
-        ProgressBar progressBar = new ProgressBar(context);
-        progressBar.setIndeterminate(true);
-        return progressBar;
-    }
-
     public static AlertDialog.Builder onErrorDialog(Context context,String error) {
        AlertDialog.Builder dialogBuilder= new AlertDialog.Builder(context, R.style.CookiesDialogCustom);
         dialogBuilder.setTitle(context.getResources().getString(R.string.errorHappen));
