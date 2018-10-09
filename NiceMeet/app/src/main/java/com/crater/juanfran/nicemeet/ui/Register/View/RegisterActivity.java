@@ -64,8 +64,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     }
 
     @Override
-    public void onFirebaseError() {
+    public void onFirebaseError(Exception e) {
 
-        Toast.makeText(this,getResources().getString(R.string.firebase_error),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,e.getMessage(),Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,7 +1,10 @@
 package com.crater.juanfran.nicemeet.ui.login.presenter;
 
+import android.content.Context;
+
 import com.crater.juanfran.nicemeet.ui.login.contract.LoginContract;
 import com.crater.juanfran.nicemeet.ui.login.interactor.LoginInteractor;
+import com.crater.juanfran.nicemeet.utils.ErrorsClass;
 
 public class LoginPresenter implements LoginContract.presenter,LoginInteractor.LoginInteractorListener {
 
@@ -18,12 +21,24 @@ public class LoginPresenter implements LoginContract.presenter,LoginInteractor.L
     }
 
     @Override
-    public void onError(String mensaje) {
-        view.onError(mensaje);
+    public void onError(int error) {
+
+        view.onError(ErrorsClass.onError(error,(Context) view));
+
+    }
+
+    @Override
+    public void onErrorFirebase(String error) {
+        view.onError(error);
     }
 
     @Override
     public void onAccess() {
         view.goMain();
+    }
+
+    @Override
+    public void onStartProgress() {
+        view.onStartProgress();
     }
 }

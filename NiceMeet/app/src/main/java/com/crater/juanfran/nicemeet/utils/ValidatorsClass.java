@@ -10,8 +10,26 @@ public class ValidatorsClass {
     private static Matcher matcher;
 
     public static boolean validateEmail(String email) {
+        if(email==null)
+            return false;
         pattern = Pattern.compile(EMAIL_REGEX, Pattern.CASE_INSENSITIVE);
         matcher = pattern.matcher(email);
         return matcher.matches();
+    }
+
+    public static int validatePassword(String password) {
+        if (password.isEmpty()) {
+            return ErrorsClass.PASSWORDISEMPTY;
+        }
+        if (password.length()<6)
+        {
+            return ErrorsClass.PASSWORDTOOSHORT;
+        }
+        if(!password.matches(".*\\d+.*"))
+        {
+            return ErrorsClass.PASSWORDNOTCONTAINNUMBER;
+        }
+        return 0;
+
     }
 }

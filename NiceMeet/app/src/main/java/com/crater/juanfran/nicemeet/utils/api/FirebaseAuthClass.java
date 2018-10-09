@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,11 +22,14 @@ public class FirebaseAuthClass {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                         listener.onSucces();
-                        } else {
-                            listener.onError();
                         }
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                listener.onError(e);
+            }
+        });
     }
 
 
@@ -38,12 +42,15 @@ public class FirebaseAuthClass {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             listener.onSignUp();
-                        } else {
-                            listener.onError();
                         }
 
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                listener.onError(e);
+            }
+        });
     }
 
     public static void loginWithEmail(String email, String password, final FirebaseAuthClass.FbSignInListener listener) {
@@ -55,24 +62,27 @@ public class FirebaseAuthClass {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             listener.onSignIn();
-                        } else {
-                            listener.onError();
                         }
                     }
-                });
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                listener.onError(e);
+            }
+        });
     }
 
     public interface FbResetEmailListener
     {
         void onSucces();
-        void onError();
+        void onError(Exception e);
     }
     public interface FbSignInListener {
-        void onError();//TODO Asignar una lista de errores para enviar por el listener
+        void onError(Exception e);
         void onSignIn();
     }
     public interface FbSignUpListener {
-        void onError();//TODO Asignar una lista de errores para enviar por el listener
+        void onError(Exception e);
         void onSignUp();
     }
     public static MyFirebaseUser AccessUserInfo()

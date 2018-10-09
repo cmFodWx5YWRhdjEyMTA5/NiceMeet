@@ -1,5 +1,7 @@
 package com.crater.juanfran.nicemeet.ui.login.view;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -18,6 +20,7 @@ import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.ui.Register.View.RegisterActivity;
 import com.crater.juanfran.nicemeet.ui.login.contract.LoginContract;
 import com.crater.juanfran.nicemeet.ui.login.presenter.LoginPresenter;
+import com.crater.juanfran.nicemeet.utils.DialogsUtils;
 import com.crater.juanfran.nicemeet.utils.ValidatorsClass;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.view {
@@ -27,8 +30,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     private EditText edtUser;
     private EditText edtpassword;
     private TextView txtVIfSignUp,txtVPasswordForget;
-    private CheckBox chkB_Remember;
-    private View screen;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     }
 
     private void initUI() {
-        screen=findViewById(R.id.screen);
         edtUser=findViewById(R.id.edT_User);
         edtpassword=findViewById(R.id.edT_Passw);
         txtVIfSignUp=findViewById(R.id.txtVIfSignUp);
@@ -68,19 +69,28 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
             @Override
             public void onClick(View v) {
-               // presenter.onSignIn(edtUser.getText().toString(),edtpassword.getText().toString());
-                goMain();
+                presenter.onSignIn(edtUser.getText().toString(),edtpassword.getText().toString());
             }
         });
-        View.OnClickListener clickTemporal = new View.OnClickListener() {
+
+        btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Snackbar.make(screen,"Aun no funciona esto, hay que programarlo",Snackbar.LENGTH_SHORT).show();
+
             }
-        };
-        btnGoogle.setOnClickListener(clickTemporal);
-        btnFacebook.setOnClickListener(clickTemporal);
-        btnTwitter.setOnClickListener(clickTemporal);
+        });
+        btnFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        btnTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
@@ -98,6 +108,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void goMain() {
+        progressDialog.cancel();
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
@@ -107,6 +118,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, R.style.CookiesDialogCustom);
         dialogBuilder.setTitle(getResources().getString(R.string.errorHappen));
         dialogBuilder.setMessage(error);
+        dialogBuilder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+           dialog.dismiss();
+            }
+        });
+        dialogBuilder.show();
+        progressDialog.cancel();
     }
 
     @Override
@@ -119,6 +138,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
             intent.putExtra("bnd",bundle);
         }
         startActivity(intent);
+    }
+
+    @Override
+    public void onStartProgress() {
+    progressDialog= DialogsUtils.showProgress(this);
+    progressDialog.show();
     }
 }
 

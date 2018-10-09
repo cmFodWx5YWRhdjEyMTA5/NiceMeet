@@ -30,8 +30,8 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mData=new ArrayList<>();
-        mData.add(new User());
-        mData.add(new User());
+        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"aa",0));
+        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"aa",0));
     }
 
     @Override
@@ -68,9 +68,6 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
 
     @Override
     public void onStackEmpty() {
-        mData.add(new User());
-        mData.add(new User());
-        cardStackAdapter.notifyDataSetChanged();
     }
 
     public interface SwipeFragmentInteractionListener {

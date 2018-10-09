@@ -37,7 +37,7 @@ public class ForgetActivity extends AppCompatActivity implements FirebaseAuthCla
     }
 
     @Override
-    public void onError() {
-        Toast.makeText(ForgetActivity.this, R.string.failedReset, Toast.LENGTH_SHORT).show();
+    public void onError(Exception e) {
+        Toast.makeText(ForgetActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }

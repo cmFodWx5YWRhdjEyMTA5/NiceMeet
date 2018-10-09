@@ -46,5 +46,8 @@
     <string name="btn_reset_password">Enviar mensaje</string>
     <string name="resetComplet">Mensaje Enviado</string>
     <string name="failedReset">Ha ocurrido un error, compruebe que el correo sea correcto</string>
+    <string name="emailNotValid">Email no valido, vuelva a escribirlo</string>
+    <string name="passwordNotNumber">La contraseña debe contener un numero</string>
+    <string name="passwordTooShort">La contraseña debe contener 6 caracteres</string>
 
 </resources>

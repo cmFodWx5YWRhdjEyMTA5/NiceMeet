@@ -8,9 +8,12 @@ public class Message implements Parcelable {
     public String idReceiver;
     public String text;
     public long timestamp;
-    public Message()
-    {
-        text="Hola owo";
+
+    public Message(String idSender, String idReceiver, String text, long timestamp) {
+        this.idSender = idSender;
+        this.idReceiver = idReceiver;
+        this.text = text;
+        this.timestamp = timestamp;
     }
 
     public Message(Parcel in) {

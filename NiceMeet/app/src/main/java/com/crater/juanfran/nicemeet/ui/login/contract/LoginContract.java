@@ -7,6 +7,8 @@ public interface LoginContract {
         void goMain();
         void onError(String error);
         void goForget(String email);
+
+        void onStartProgress();
     }
     interface presenter
     {

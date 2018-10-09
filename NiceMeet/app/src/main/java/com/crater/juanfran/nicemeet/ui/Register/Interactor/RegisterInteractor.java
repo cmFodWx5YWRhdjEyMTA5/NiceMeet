@@ -41,8 +41,8 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
     }
 
     @Override
-    public void onError() {
-        listener.onFirebaseError();
+    public void onError(Exception e) {
+        listener.onFirebaseError(e);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
         void onEmailEmptyError();
         void onPasswordError();
         void onEmailError();
-        void onFirebaseError();
+        void onFirebaseError(Exception e);
         void onPasswordDifferent();
     }
 }

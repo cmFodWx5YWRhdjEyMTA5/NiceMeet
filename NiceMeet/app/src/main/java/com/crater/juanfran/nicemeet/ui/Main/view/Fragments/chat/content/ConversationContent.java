@@ -25,8 +25,4 @@ public class ConversationContent {
         ITEM_MAP.put(item.getUidReciever(), item);
     }
 
-    private static Conversation createConv(int position) {
-        return new Conversation();
-    }
-
 }

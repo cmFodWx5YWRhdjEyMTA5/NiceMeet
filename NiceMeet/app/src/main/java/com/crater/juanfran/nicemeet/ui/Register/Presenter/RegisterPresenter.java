@@ -43,8 +43,8 @@ public class RegisterPresenter implements RegisterContract.Presenter ,RegisterIn
     }
 
     @Override
-    public void onFirebaseError() {
-        view.onFirebaseError();
+    public void onFirebaseError(Exception e) {
+        view.onFirebaseError(e);
     }
 
     @Override

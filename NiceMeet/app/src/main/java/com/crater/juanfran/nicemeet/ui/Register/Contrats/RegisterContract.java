@@ -9,7 +9,7 @@ public interface RegisterContract {
         void onPasswordError();
         void onEmailError();
         void onPasswordDifferent();
-        void onFirebaseError();
+        void onFirebaseError(Exception e);
     }
 
     interface Presenter {

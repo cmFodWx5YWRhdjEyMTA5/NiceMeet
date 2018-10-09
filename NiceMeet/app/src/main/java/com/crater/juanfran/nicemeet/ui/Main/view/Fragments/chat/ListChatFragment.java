@@ -49,8 +49,8 @@ public class ListChatFragment extends Fragment implements MychatRecyclerViewAdap
         DividerItemDecoration itemDecor = new DividerItemDecoration((Context) mListener, HORIZONTAL);
         list.addItemDecoration(itemDecor);
         ArrayList<Conversation> conversations=new ArrayList<Conversation>();
-        Conversation conversation = new Conversation();
-        conversation.getListMessageData().add(new Message());
+        Conversation conversation = new Conversation("aa","aa");
+        conversation.getListMessageData().add(new Message("aa","aa","aa",(long)234));
         conversations.add(conversation);
         MychatRecyclerViewAdapter adapter= new MychatRecyclerViewAdapter(conversations,this);
         list.setAdapter(adapter);

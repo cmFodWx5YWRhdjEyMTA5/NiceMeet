@@ -14,9 +14,10 @@ public class Conversation implements Parcelable {
         return nameReciever;
     }
 
-    public Conversation(){
+    public Conversation(String uid,String nameReciever){
         listMessageData = new ArrayList<>();
-        nameReciever="Bongo Cat";
+        this.uidReciever=uid;
+        this.nameReciever=nameReciever;
     }
 
 
