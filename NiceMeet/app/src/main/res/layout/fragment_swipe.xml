@@ -12,5 +12,5 @@
         android:layout_height="match_parent"
         android:padding="32dp"
         app:stack_rotation="5"
-        app:stack_size="5" />
+        app:stack_size="1" />
 </FrameLayout>
