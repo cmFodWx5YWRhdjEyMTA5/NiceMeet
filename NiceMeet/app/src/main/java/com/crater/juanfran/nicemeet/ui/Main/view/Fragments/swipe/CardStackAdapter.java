@@ -64,7 +64,7 @@ public class CardStackAdapter extends BaseAdapter {
             public void onClick(View v) {
                 btnDisLike.setVisibility(View.INVISIBLE);
                 btnLike.setVisibility(View.INVISIBLE);
-                listener.onLike(listUsers.get(position).getUid());
+                listener.onLike();
             }
         });
         btnDisLike.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +72,7 @@ public class CardStackAdapter extends BaseAdapter {
             public void onClick(View v) {
                 btnDisLike.setVisibility(View.INVISIBLE);
                 btnLike.setVisibility(View.INVISIBLE);
-                listener.onDisLike(listUsers.get(position).getUid());
+                listener.onDisLike();
             }
         });
         profile.setOnClickListener(new View.OnClickListener() {
@@ -88,9 +88,9 @@ public class CardStackAdapter extends BaseAdapter {
     {
         void onProfile(User user);
 
-        void onLike(String uid);
+        void onLike();
 
-        void onDisLike(String uid);
+        void onDisLike();
     }
 
 }

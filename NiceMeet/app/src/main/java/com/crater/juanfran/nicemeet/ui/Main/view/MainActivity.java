@@ -1,6 +1,7 @@
 package com.crater.juanfran.nicemeet.ui.Main.view;
 
 import android.content.Intent;
+import android.graphics.drawable.TransitionDrawable;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -97,8 +98,11 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
 //SwipeMethods
     @Override
     public void onSwipe(String uid) {
-        //manda al servidor el like
+        frameLayout.setBackground(getResources().getDrawable(R.drawable.gradientlike));
+        TransitionDrawable transition = (TransitionDrawable) frameLayout.getBackground();
+        transition.startTransition(500);
         presenter.OnLike(uid);
+        transition.reverseTransition(500);
     }
 
     @Override
@@ -110,7 +114,11 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
 
     @Override
     public void onNotSwipe(String uid) {
+        frameLayout.setBackground(getResources().getDrawable(R.drawable.gradientdislike));
+        TransitionDrawable transition = (TransitionDrawable) frameLayout.getBackground();
+        transition.startTransition(500);
         presenter.onDislike(uid);
+        transition.reverseTransition(500);
     }
 
 

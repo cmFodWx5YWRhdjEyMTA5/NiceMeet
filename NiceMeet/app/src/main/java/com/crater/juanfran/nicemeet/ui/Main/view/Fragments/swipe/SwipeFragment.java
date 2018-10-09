@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.db.model.User;
@@ -28,13 +29,12 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
 
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mData=new ArrayList<>();
-        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"aa",0));
-        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"aa",0));
+        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"aa",0,(long)12));
+        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"aa",0,(long)12));
     }
 
     @Override
@@ -42,8 +42,9 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
                              Bundle savedInstanceState) {
         cardStackAdapter=new CardStackAdapter(mData,(Context) mListener,this);
         View view = inflater.inflate(R.layout.fragment_swipe, container, false);
-        swipeStack = (SwipeStack) view.findViewById(R.id.swipeStack);
+        swipeStack =view.findViewById(R.id.swipeStack);
         swipeStack.setAdapter(cardStackAdapter);
+        swipeStack.setListener(this);
         return view;
     }
 
@@ -59,6 +60,8 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
         mListener = null;
     }
 
+
+    ///listener de libreria
     @Override
     public void onViewSwipedToLeft(int position) {
         mListener.onNotSwipe(mData.get(position).getUid());
@@ -73,27 +76,26 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
     public void onStackEmpty() {
     }
 
+
+    ///Listener de adapter
     @Override
     public void onProfile(User user) {
        mListener.onClickProfile(user);
     }
 
     @Override
-    public void onLike(String uid) {
-        mListener.onSwipe(uid);
+    public void onLike() {
         swipeStack.swipeTopViewToRight();
     }
 
     @Override
-    public void onDisLike(String uid) {
-        mListener.onNotSwipe(uid);
+    public void onDisLike() {
         swipeStack.swipeTopViewToLeft();
     }
 
     public interface SwipeFragmentInteractionListener {
         void onSwipe(String uid);
         void onClickProfile(User user);
-
         void onNotSwipe(String uid);
     }
 }
