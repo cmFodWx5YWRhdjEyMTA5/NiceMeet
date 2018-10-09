@@ -47,17 +47,4 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_margin">10dp</item>
     </style>
-
-    <style name="MyButtonGoogle" parent="@android:style/Widget.Button">
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:background">@drawable/r_cgoogle</item>
-    </style>
-    <style name="MyButtonFacebook" parent="@android:style/Widget.Button">
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:background">@drawable/r_cfacebook</item>
-    </style>
-    <style name="MyButtonTwitter" parent="@android:style/Widget.Button">
-        <item name="android:layout_margin">10dp</item>
-        <item name="android:background">@drawable/r_ctwitter</item>
-    </style>
 </resources>

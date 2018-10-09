@@ -25,7 +25,7 @@ import fr.castorflex.android.circularprogressbar.CircularProgressBar;
 public class LoginActivity extends AppCompatActivity implements LoginContract.view {
 
     LoginContract.presenter presenter;
-    private Button btn_SignIn,btnGoogle,btnFacebook,btnTwitter;
+    private Button btn_SignIn;
     private EditText edtUser;
     private EditText edtpassword;
     private TextView txtVIfSignUp,txtVPasswordForget;
@@ -49,9 +49,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         txtVIfSignUp=findViewById(R.id.txtVIfSignUp);
         txtVPasswordForget=findViewById(R.id.txtVForgetPassword);
         btn_SignIn=findViewById(R.id.btn_SignIn);
-        btnTwitter=findViewById(R.id.btn_TwitterLogin);
-        btnGoogle=findViewById(R.id.btn_GoogleLogin);
-        btnFacebook=findViewById(R.id.btn_FacebookLogin);
+
         txtVIfSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,25 +69,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
             @Override
             public void onClick(View v) {
                 presenter.onSignIn(edtUser.getText().toString(),edtpassword.getText().toString());
-            }
-        });
-
-        btnGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        btnFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        btnTwitter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 
