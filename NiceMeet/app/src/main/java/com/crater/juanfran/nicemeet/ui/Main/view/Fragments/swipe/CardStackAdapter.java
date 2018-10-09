@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,8 +56,8 @@ public class CardStackAdapter extends BaseAdapter {
 
         convertView = ((Activity)context).getLayoutInflater().inflate(R.layout.card, parent, false);
         TextView textViewCard = (TextView) convertView.findViewById(R.id.textViewCard);
-        CircleImageView profile_image = convertView.findViewById(R.id.profile_image);
-        profile_image.setOnClickListener(new View.OnClickListener() {
+        ImageButton profile = convertView.findViewById(R.id.btnProfile);
+        profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             listener.onProfile(listUsers.get(position));
