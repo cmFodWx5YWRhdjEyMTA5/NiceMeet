@@ -15,8 +15,9 @@ public class User implements Parcelable {
     public int instaNum;
     public String twitt;
     public int twittNum;
+    public long date;
 
-    public User(String uid, String name, String email, String avata, String[] tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum) {
+    public User(String uid, String name, String email, String avata, String[] tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum, long date) {
         this.uid = uid;
         this.name = name;
         this.email = email;
@@ -28,6 +29,7 @@ public class User implements Parcelable {
         this.instaNum = instaNum;
         this.twitt = twitt;
         this.twittNum = twittNum;
+        this.date = date;
     }
 
     protected User(Parcel in) {
@@ -42,6 +44,7 @@ public class User implements Parcelable {
         instaNum = in.readInt();
         twitt = in.readString();
         twittNum = in.readInt();
+        date = in.readLong();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -104,6 +107,14 @@ public class User implements Parcelable {
         this.face = face;
     }
 
+    public int getFaceNum() {
+        return faceNum;
+    }
+
+    public void setFaceNum(int faceNum) {
+        this.faceNum = faceNum;
+    }
+
     public String getInsta() {
         return insta;
     }
@@ -112,12 +123,36 @@ public class User implements Parcelable {
         this.insta = insta;
     }
 
+    public int getInstaNum() {
+        return instaNum;
+    }
+
+    public void setInstaNum(int instaNum) {
+        this.instaNum = instaNum;
+    }
+
     public String getTwitt() {
         return twitt;
     }
 
     public void setTwitt(String twitt) {
         this.twitt = twitt;
+    }
+
+    public int getTwittNum() {
+        return twittNum;
+    }
+
+    public void setTwittNum(int twittNum) {
+        this.twittNum = twittNum;
+    }
+
+    public long getDate() {
+        return date;
+    }
+
+    public void setDate(long date) {
+        this.date = date;
     }
 
     @Override
@@ -138,5 +173,6 @@ public class User implements Parcelable {
         dest.writeInt(instaNum);
         dest.writeString(twitt);
         dest.writeInt(twittNum);
+        dest.writeLong(date);
     }
 }
