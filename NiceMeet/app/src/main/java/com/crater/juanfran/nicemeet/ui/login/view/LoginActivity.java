@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     private EditText edtpassword;
     private TextView txtVIfSignUp,txtVPasswordForget;
     private ProgressDialog progressDialog;
+    private AlertDialog.Builder alertDig;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,16 +116,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void onError(String error) {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, R.style.CookiesDialogCustom);
-        dialogBuilder.setTitle(getResources().getString(R.string.errorHappen));
-        dialogBuilder.setMessage(error);
-        dialogBuilder.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-           dialog.dismiss();
-            }
-        });
-        dialogBuilder.show();
+        alertDig= DialogsUtils.onErrorDialog(this,error);
+        alertDig.show();
         progressDialog.cancel();
     }
 
