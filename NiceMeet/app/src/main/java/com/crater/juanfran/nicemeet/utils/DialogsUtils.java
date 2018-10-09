@@ -1,19 +1,20 @@
 package com.crater.juanfran.nicemeet.utils;
 
-import android.app.ProgressDialog;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
+import android.widget.ProgressBar;
 
 import com.crater.juanfran.nicemeet.R;
 
 public class DialogsUtils
 {
-    public static ProgressDialog showProgress(Context context)
+    public static ProgressBar showProgress(Context context)
     {
-        ProgressDialog dialog = ProgressDialog.show(context, "",
-                "Loading. Please wait...", true);
-        return dialog;
+        ProgressBar progressBar = new ProgressBar(context);
+        progressBar.setIndeterminate(true);
+        return progressBar;
     }
 
     public static AlertDialog.Builder onErrorDialog(Context context,String error) {

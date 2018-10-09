@@ -23,7 +23,7 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
     private SwipeFragmentInteractionListener mListener;
     private ArrayList<User> mData;
     CardStackAdapter cardStackAdapter;
-
+    SwipeStack swipeStack;
     public SwipeFragment() {
 
     }
@@ -42,7 +42,7 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
                              Bundle savedInstanceState) {
         cardStackAdapter=new CardStackAdapter(mData,(Context) mListener,this);
         View view = inflater.inflate(R.layout.fragment_swipe, container, false);
-        SwipeStack swipeStack = (SwipeStack) view.findViewById(R.id.swipeStack);
+        swipeStack = (SwipeStack) view.findViewById(R.id.swipeStack);
         swipeStack.setAdapter(cardStackAdapter);
         return view;
     }
@@ -76,6 +76,18 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
     @Override
     public void onProfile(User user) {
        mListener.onClickProfile(user);
+    }
+
+    @Override
+    public void onLike(String uid) {
+        mListener.onSwipe(uid);
+        swipeStack.swipeTopViewToRight();
+    }
+
+    @Override
+    public void onDisLike(String uid) {
+        mListener.onNotSwipe(uid);
+        swipeStack.swipeTopViewToLeft();
     }
 
     public interface SwipeFragmentInteractionListener {

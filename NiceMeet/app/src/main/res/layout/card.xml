@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     card_view:cardCornerRadius="6dp"
     card_view:cardElevation="8dp">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:gravity="center"
             android:text="hola"
             android:textSize="44sp"
@@ -40,7 +41,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.14999998" />
+            app:layout_constraintVertical_bias="0.100000024" />
 
         <TextView
             android:id="@+id/txtDescripcion"
@@ -64,8 +65,8 @@
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintVertical_bias="0.7" />
+            card_view:layout_constraintTop_toBottomOf="@+id/txtDescripcion"
+            card_view:layout_constraintVertical_bias="0.100000024" />
 
         <ImageButton
             android:id="@+id/btnProfile"
@@ -74,12 +75,40 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/ic_moreprofile"
             android:background="@drawable/roundbutton"
+            android:src="@drawable/ic_moreprofile"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@+id/txtEtiquetas"
-            card_view:layout_constraintTop_toBottomOf="@+id/txtEtiquetas"
-            />
+            card_view:layout_constraintTop_toBottomOf="@+id/txtEtiquetas" />
+
+        <ImageButton
+            android:id="@+id/btnDisLike"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/roundbutton"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:src="@drawable/ic_dislike"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.25"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/btnLike" />
+
+        <ImageButton
+            android:id="@+id/btnLike"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/roundbutton"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:src="@drawable/ic_like"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintHorizontal_bias="0.75"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/btnProfile" />
 
     </android.support.constraint.ConstraintLayout>
 

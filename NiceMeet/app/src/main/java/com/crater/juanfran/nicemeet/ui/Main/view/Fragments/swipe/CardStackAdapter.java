@@ -57,6 +57,24 @@ public class CardStackAdapter extends BaseAdapter {
         convertView = ((Activity)context).getLayoutInflater().inflate(R.layout.card, parent, false);
         TextView textViewCard = (TextView) convertView.findViewById(R.id.textViewCard);
         ImageButton profile = convertView.findViewById(R.id.btnProfile);
+        final ImageButton btnLike =convertView.findViewById(R.id.btnLike);
+        final ImageButton btnDisLike = convertView.findViewById(R.id.btnDisLike);
+        btnLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnDisLike.setVisibility(View.INVISIBLE);
+                btnLike.setVisibility(View.INVISIBLE);
+                listener.onLike(listUsers.get(position).getUid());
+            }
+        });
+        btnDisLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnDisLike.setVisibility(View.INVISIBLE);
+                btnLike.setVisibility(View.INVISIBLE);
+                listener.onDisLike(listUsers.get(position).getUid());
+            }
+        });
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +87,10 @@ public class CardStackAdapter extends BaseAdapter {
     public interface AdapterListener
     {
         void onProfile(User user);
+
+        void onLike(String uid);
+
+        void onDisLike(String uid);
     }
 
 }

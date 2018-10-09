@@ -1,17 +1,14 @@
 package com.crater.juanfran.nicemeet.ui.login.view;
 
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
+import android.widget.ProgressBar;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,7 +27,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     private EditText edtUser;
     private EditText edtpassword;
     private TextView txtVIfSignUp,txtVPasswordForget;
-    private ProgressDialog progressDialog;
+    private ProgressBar progressDialog;
     private AlertDialog.Builder alertDig;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void goMain() {
-        progressDialog.cancel();
+      //  progressDialog.cancel();
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }
@@ -118,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     public void onError(String error) {
         alertDig= DialogsUtils.onErrorDialog(this,error);
         alertDig.show();
-        progressDialog.cancel();
+     //   progressDialog.cancel();
     }
 
     @Override
@@ -135,8 +132,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
 
     @Override
     public void onStartProgress() {
-    progressDialog= DialogsUtils.showProgress(this);
-    progressDialog.show();
+  //  progressDialog= DialogsUtils.showProgress(this);
     }
 }
 
