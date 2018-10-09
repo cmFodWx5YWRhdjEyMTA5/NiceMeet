@@ -1,5 +1,6 @@
 package com.crater.juanfran.nicemeet.ui.Main.view;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
@@ -19,6 +20,7 @@ import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.chat.ListChatFragment
 import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.profile.ProfileFragment;
 import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.swipe.SwipeFragment;
 import com.crater.juanfran.nicemeet.R;
+import com.crater.juanfran.nicemeet.ui.profile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity implements SwipeFragment.SwipeFragmentInteractionListener,ListChatFragment.OnListChatInteractionListener, MainContract.view {
     BottomNavigationView bottomNavigationView;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
         frameLayout=findViewById(R.id.framelayu);
         bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
+
          bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
              @Override
              public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
                  return loadFragment(fragment);
              }
          });
+        loadFragment(new SwipeFragment());
     }
     private boolean loadFragment(Fragment fragment) {
         //switching fragment
@@ -99,7 +103,14 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
 
     @Override
     public void onClickProfile(User user) {
-        //recoge los datos el usuario y los manda a una activity(o fragment, segun como vea la cosa)
+        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+        intent.putExtra("user",user);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onNotSwipe(String uid) {
+        presenter.onDislike(uid);
     }
 
 

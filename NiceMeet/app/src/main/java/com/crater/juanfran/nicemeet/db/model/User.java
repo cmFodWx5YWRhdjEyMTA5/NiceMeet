@@ -1,6 +1,9 @@
 package com.crater.juanfran.nicemeet.db.model;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class User implements Parcelable {
     public String uid;
     public String name;
     public String email;
@@ -26,6 +29,32 @@ public class User {
         this.twitt = twitt;
         this.twittNum = twittNum;
     }
+
+    protected User(Parcel in) {
+        uid = in.readString();
+        name = in.readString();
+        email = in.readString();
+        avata = in.readString();
+        tags = in.createStringArray();
+        face = in.readString();
+        faceNum = in.readInt();
+        insta = in.readString();
+        instaNum = in.readInt();
+        twitt = in.readString();
+        twittNum = in.readInt();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getUid() {
         return uid;
@@ -89,5 +118,25 @@ public class User {
 
     public void setTwitt(String twitt) {
         this.twitt = twitt;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(uid);
+        dest.writeString(name);
+        dest.writeString(email);
+        dest.writeString(avata);
+        dest.writeStringArray(tags);
+        dest.writeString(face);
+        dest.writeInt(faceNum);
+        dest.writeString(insta);
+        dest.writeInt(instaNum);
+        dest.writeString(twitt);
+        dest.writeInt(twittNum);
     }
 }

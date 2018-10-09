@@ -49,5 +49,6 @@
     <string name="emailNotValid">Email no valido, vuelva a escribirlo</string>
     <string name="passwordNotNumber">La contraseña debe contener un numero</string>
     <string name="passwordTooShort">La contraseña debe contener 6 caracteres</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 </resources>

@@ -7,9 +7,13 @@ public interface MainContract {
     interface presenter
     {
       void OnLike(String uid);
+
+        void onDislike(String uid);
     }
     interface interactor
     {
        void OnLike(String uid);
+
+        void onDislike(String uid);
     }
 }

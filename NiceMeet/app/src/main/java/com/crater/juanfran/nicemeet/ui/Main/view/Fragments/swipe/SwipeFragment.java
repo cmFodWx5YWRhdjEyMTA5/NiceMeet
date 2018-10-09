@@ -1,7 +1,9 @@
 package com.crater.juanfran.nicemeet.ui.Main.view.Fragments.swipe;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +11,14 @@ import android.view.ViewGroup;
 
 import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.db.model.User;
+import com.crater.juanfran.nicemeet.ui.profile.ProfileActivity;
 
 import java.util.ArrayList;
 
 import link.fls.swipestack.SwipeStack;
 
 
-public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackListener {
+public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackListener, CardStackAdapter.AdapterListener {
 
     private SwipeFragmentInteractionListener mListener;
     private ArrayList<User> mData;
@@ -37,7 +40,7 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        cardStackAdapter=new CardStackAdapter(mData,(Context) mListener);
+        cardStackAdapter=new CardStackAdapter(mData,(Context) mListener,this);
         View view = inflater.inflate(R.layout.fragment_swipe, container, false);
         SwipeStack swipeStack = (SwipeStack) view.findViewById(R.id.swipeStack);
         swipeStack.setAdapter(cardStackAdapter);
@@ -58,7 +61,7 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
 
     @Override
     public void onViewSwipedToLeft(int position) {
-
+        mListener.onNotSwipe(mData.get(position).getUid());
     }
 
     @Override
@@ -70,8 +73,15 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
     public void onStackEmpty() {
     }
 
+    @Override
+    public void onProfile(User user) {
+       mListener.onClickProfile(user);
+    }
+
     public interface SwipeFragmentInteractionListener {
         void onSwipe(String uid);
         void onClickProfile(User user);
+
+        void onNotSwipe(String uid);
     }
 }

@@ -15,4 +15,9 @@ public class MainPresenter implements MainContract.presenter, MainInteractor.Mai
     public void OnLike(String uid) {
         interactor.OnLike(uid);
     }
+
+    @Override
+    public void onDislike(String uid) {
+        interactor.onDislike(uid);
+    }
 }
