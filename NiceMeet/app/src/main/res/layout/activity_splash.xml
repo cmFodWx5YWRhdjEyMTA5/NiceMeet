@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.Splash.SplashActivity">
 
+    <fr.castorflex.android.circularprogressbar.CircularProgressBar
+        android:id="@+id/marker_progress"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:cpb_colors="@array/rainbow"
+        app:cpb_sweep_speed="3.0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.76" />
+
+
 </android.support.constraint.ConstraintLayout>
