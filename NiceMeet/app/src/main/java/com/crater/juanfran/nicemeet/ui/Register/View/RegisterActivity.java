@@ -13,24 +13,12 @@ import com.crater.juanfran.nicemeet.ui.Register.Presenter.RegisterPresenter;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterContract.View {
 
-    EditText edtPassword,edtPasswordAgain,edtEmail;
-    Button btnSignIn;
     RegisterContract.Presenter presenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        edtEmail=findViewById(R.id.edtEmail);
-        edtPassword=findViewById(R.id.edtPassword);
-        edtPasswordAgain=findViewById(R.id.edtPasswordAgain);
-        btnSignIn=findViewById(R.id.btnSignIn);
         presenter= new RegisterPresenter(this);
-        btnSignIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.validateCredentials(edtPassword.getText().toString(),edtPasswordAgain.getText().toString(),edtEmail.getText().toString());
-            }
-        });
     }
 
     @Override

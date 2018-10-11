@@ -29,8 +29,7 @@
         <activity
             android:name=".ui.Register.View.RegisterActivity"
             android:label="@string/title_activity_register"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.Main.view.Fragments.chat.ChatActivity" />
+            android:theme="@style/AppTheme" />
         <activity android:name=".ui.login.view.ForgetActivity" />
         <activity
             android:name=".ui.profile.ProfileActivity"
