@@ -8,6 +8,7 @@
     <color name="colorGoogle">#e25f43</color>
     <color name="colorFacebook">#3b5998</color>
     <color name="colorTwitter">#c0deed</color>
+    <color name="transparent">#80000000</color>
 
     <array name="myColors">
         <item>@color/colorAccent</item>

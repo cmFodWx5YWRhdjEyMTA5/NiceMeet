@@ -52,5 +52,7 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="name">Tu nombre</string>
     <string name="registro">Registro</string>
+    <string name="volver">Volver</string>
+    <string name="siguiente">Siguiente</string>
 
 </resources>

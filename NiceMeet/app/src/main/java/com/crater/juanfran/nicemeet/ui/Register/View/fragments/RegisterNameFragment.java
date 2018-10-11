@@ -54,8 +54,12 @@ public class RegisterNameFragment extends Fragment {
         mListener = null;
     }
 
+    public boolean getName() {
+
+        return false;
+    }
+
     public interface OnNameRegisterListener {
-        void addName();
-        void nextPace();
+        void setName(String name);
     }
 }

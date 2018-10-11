@@ -47,6 +47,10 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_margin">10dp</item>
     </style>
+    <style name="ButtonRegister" parent="Widget.Button.Transparent">
+        <item name="android:background">@drawable/roundbutton</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+    </style>
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splashlooks</item>
     </style>
