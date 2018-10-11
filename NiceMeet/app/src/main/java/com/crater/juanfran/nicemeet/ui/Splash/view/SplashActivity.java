@@ -50,7 +50,7 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     private void updateUI() {
             progressBar.setVisibility(View.INVISIBLE);
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
-            finish();
+           finish();
     }
 
     @Override
