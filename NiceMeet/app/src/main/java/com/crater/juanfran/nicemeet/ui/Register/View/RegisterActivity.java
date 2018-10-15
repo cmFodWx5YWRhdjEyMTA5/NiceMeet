@@ -20,7 +20,11 @@ import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Data.SecondRegist
 import com.crater.juanfran.nicemeet.utils.ThisApplication;
 import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterContract.View, RegisterNameFragment.OnNameRegisterListener,SecondRegisterFragment.OnDataRegisterListener,LastRegisterFragment.OnTagsRegisterListener {
+public class RegisterActivity extends AppCompatActivity implements
+        RegisterContract.View,
+        RegisterNameFragment.OnNameRegisterListener,
+        SecondRegisterFragment.OnDataRegisterListener,
+        LastRegisterFragment.OnTagsRegisterListener {
 
     RegisterContract.Presenter presenter;
     private String TAG_FRAGMENTNAME="NAME";
@@ -43,7 +47,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         fragment= new RegisterNameFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.registry_frame, fragment, TAG_FRAGMENTNAME);
-        transaction.addToBackStack(null);
         transaction.commit();
         usuarioRegistrando=new User();
         btnNext.setOnClickListener(new View.OnClickListener() {

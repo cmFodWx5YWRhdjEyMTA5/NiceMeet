@@ -1,6 +1,5 @@
 package com.crater.juanfran.nicemeet.ui.login.view;
 
-import android.widget.ProgressBar;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -77,12 +76,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     @Override
     public void goRegister(String email) {
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-        if(ValidatorsClass.validateEmail(email))
-        {
-            Bundle bundle = new Bundle();
-            bundle.putString("email",email);
-            intent.putExtra("bnd",bundle);
-        }
         startActivity(intent);
     }
 
@@ -103,12 +96,12 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
     @Override
     public void goForget(String email) {
         Intent intent = new Intent(LoginActivity.this,ForgetActivity.class);
+        Bundle bundle = new Bundle();
         if(ValidatorsClass.validateEmail(email))
         {
-            Bundle bundle = new Bundle();
             bundle.putString("email",email);
-            intent.putExtra("bnd",bundle);
         }
+        intent.putExtra("bnd",bundle);
         startActivity(intent);
     }
 

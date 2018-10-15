@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NiceMeet</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">¡Hola!\nBienvenid@ a NiceMeet. Para empezar, ¿porqué no me dices como quieres que se refieran a ti?</string>
+    <string name="title_activity_login">Inicio Sesion</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="errorHappen">Ha ocurrido un error</string>
+    <string name="recoverPassword">¿Ha olvidado su contraseña?</string>
+    <string name="txtV_IfSignUP">¿No esta registrado aún?</string>
+    <string name="btn_SignIn">Iniciar Sesion</string>
+    <string name="btn_Remember">Recordarme</string>
+    <string name="txtV_Password">Contraseña</string>
+    <string name="txtV_User">Email</string>
+    <string name="txtV_SignIn">Iniciar Sesion</string>
+    <string name="meetings">Encuentros</string>
+    <string name="chats">Conversaciones</string>
+    <string name="profile">Perfil</string>
+    <string name="settings">Ajustes</string>
+
+    <!--           -->
+
+    <string name="passwordEmptyError">Contraseña esta vacia</string>
+    <string name="emailEmptyError">Email esta vacio</string>
+    <string name="passwordError">Contraseña no valida</string>
+    <string name="userError">Usuario no valido</string>
+    <string name="firebase_error">Error en Firebase</string>
+    <string name="txvPasswordAgain">Escriba su contraseña de nuevo</string>
+    <string name="btn_SignUp">Registrarse</string>
+    <string name="passwordDifferent">Contraseñas no coinciden</string>
+    <string name="lbl_forgot_password">Escriba su correo y le enviaremos un mensaje para cambiar su contraseña</string>
+    <string name="hint_email">Email</string>
+    <string name="btn_reset_password">Enviar mensaje</string>
+    <string name="resetComplet">Mensaje Enviado</string>
+    <string name="failedReset">Ha ocurrido un error, compruebe que el correo sea correcto</string>
+    <string name="emailNotValid">Email no valido, vuelva a escribirlo</string>
+    <string name="passwordNotNumber">La contraseña debe contener un numero</string>
+    <string name="passwordTooShort">La contraseña debe contener 6 caracteres</string>
+
+
+
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="name">Tu nombre</string>
+    <string name="registro">Registro</string>
+    <string name="volver">Volver</string>
+    <string name="siguiente">Siguiente</string>
+</resources>

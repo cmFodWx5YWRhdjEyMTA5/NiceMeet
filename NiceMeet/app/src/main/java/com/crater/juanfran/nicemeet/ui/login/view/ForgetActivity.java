@@ -21,7 +21,13 @@ public class ForgetActivity extends AppCompatActivity implements FirebaseAuthCla
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_forget);
+
         inputEmail = (EditText) findViewById(R.id.email);
+        String email = getIntent().getBundleExtra("bnd").getString("email");
+        if(email!=null&&!email.isEmpty())
+        {
+         inputEmail.setText(email);
+        }
         btnReset = (Button) findViewById(R.id.btn_reset_password);
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
