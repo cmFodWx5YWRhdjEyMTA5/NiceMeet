@@ -6,13 +6,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.crater.juanfran.nicemeet.R;
 
 public class RegisterNameFragment extends Fragment {
 
     private OnNameRegisterListener mListener;
-
+    EditText edtName;
     public RegisterNameFragment() {
     }
 
@@ -26,15 +28,13 @@ public class RegisterNameFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            //mParam1 = getArguments().getString(ARG_PARAM1);
-        }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_register_name, container, false);
+        View v = inflater.inflate(R.layout.fragment_register_name, container, false);
+        edtName =  v.findViewById(R.id.edT_User2);
+        return v;
     }
 
     @Override
@@ -51,12 +51,16 @@ public class RegisterNameFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+        mListener.setName(edtName.getText().toString());
         mListener = null;
     }
 
     public boolean getName() {
+        return !edtName.getText().toString().isEmpty();
+    }
 
-        return false;
+    public void setName(String name) {
+       edtName.setText(name);
     }
 
     public interface OnNameRegisterListener {

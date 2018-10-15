@@ -23,12 +23,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     RegisterContract.Presenter presenter;
     private String TAG_FRAGMENTNAME="NAME";
     int position =0;
-    Button btnNext;
+    Button btnNext,btnBack;
     User usuarioRegistrando;
-
-    public User getUsuarioRegistrando() {
-        return usuarioRegistrando;
-    }
 
     Fragment fragment;
     @Override
@@ -36,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         btnNext=findViewById(R.id.next);
+        btnBack=findViewById(R.id.back);
         presenter= new RegisterPresenter(this);
         getSupportActionBar().setTitle(R.string.registro);
         fragment= new RegisterNameFragment();
@@ -68,6 +65,33 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
                 }else
                 {
                     //Guardamos nuevo usuario en servidor remoto con id de firebase y vamos a main con el usuario de firebase
+                }
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(position==1)//Nombre
+                {
+
+                }else if(position==2)//Datos
+                {
+                    fragment= new RegisterNameFragment();
+                    loadFragment(fragment);
+                    ((RegisterNameFragment)fragment).setName(usuarioRegistrando.getName());
+                    position--;
+                }else if(position==3)//Etiquetas
+                {
+                    fragment= new SecondRegisterFragment();
+                    loadFragment(fragment);
+                    ((SecondRegisterFragment)fragment).setDataFromUser(usuarioRegistrando);
+                    position--;
+                }else if(position ==4)
+                {
+                    fragment= new LastRegisterFragment();
+                    loadFragment(fragment);
+                    ((LastRegisterFragment)fragment).setTagsFromUser(usuarioRegistrando.getTags());
+                    position--;
                 }
             }
         });
