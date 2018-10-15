@@ -161,7 +161,10 @@ public class RegisterActivity extends AppCompatActivity implements
             fragment = LastRegisterFragment.newInstance();
 
         loadFragment(fragment);
-    }}
+    }else{
+    finish();
+    }
+    }
 
 
     @Override
