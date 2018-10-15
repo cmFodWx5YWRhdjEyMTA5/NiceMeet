@@ -14,25 +14,35 @@ public class RegisterNameFragment extends Fragment {
 
     private OnNameRegisterListener mListener;
     EditText edtName;
+    String name="";
     public RegisterNameFragment() {
     }
 
-    public static RegisterNameFragment newInstance() {
+    public static RegisterNameFragment newInstance(String name) {
         RegisterNameFragment fragment = new RegisterNameFragment();
         Bundle args = new Bundle();
+        if(name!=null&&!name.isEmpty())
+        {
+            args.putString("name",name);
+        }
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (getArguments().getString("name") != null) {
+            name= getArguments().getString("name");
+        }
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register_name, container, false);
         edtName =  v.findViewById(R.id.edT_User2);
+        edtName.setText(name);
         return v;
     }
 
@@ -53,6 +63,12 @@ public class RegisterNameFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onDestroy() {
+        mListener.setName(edtName.getText().toString());
+        super.onDestroy();
+
+    }
 
     public interface OnNameRegisterListener {
         void setName(String name);

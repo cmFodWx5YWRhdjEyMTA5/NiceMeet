@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -27,9 +28,9 @@ public class RegisterActivity extends AppCompatActivity implements
         LastRegisterFragment.OnTagsRegisterListener {
 
     RegisterContract.Presenter presenter;
-    private String TAG_FRAGMENTNAME="NAME";
     Button btnNext,btnBack;
     User usuarioRegistrando;
+    int position;
 
     Fragment fragment;
     private AppPreferencesHelper sharedPreferences;
@@ -44,31 +45,30 @@ public class RegisterActivity extends AppCompatActivity implements
         btnBack=findViewById(R.id.back);
         presenter= new RegisterPresenter(this);
         getSupportActionBar().setTitle(R.string.registro);
-        fragment= new RegisterNameFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.registry_frame, fragment, TAG_FRAGMENTNAME);
+        fragment= RegisterNameFragment.newInstance(null);
+        final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.registry_frame, fragment);
         transaction.commit();
+        position=0;
         usuarioRegistrando=new User();
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                next();
         } });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-            }
-        });
+               back();
+        }});
     }
 
     private boolean loadFragment(Fragment fragment) {
-        //switching fragment
         if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.framelayu, fragment)
-                    .addToBackStack(null)
+                    .replace(R.id.registry_frame, fragment)
                     .commit();
             return true;
         }
@@ -116,6 +116,7 @@ public class RegisterActivity extends AppCompatActivity implements
         usuarioRegistrando.setName(name);
     }
 
+
     @Override
     public void setData(String email, String gender, long date) {
         usuarioRegistrando.setEmail(email);
@@ -126,5 +127,45 @@ public class RegisterActivity extends AppCompatActivity implements
     @Override
     public void setTags(String[] tags) {
         usuarioRegistrando.setTags(tags);
+    }
+
+
+    public void next ()
+    {
+        position++;
+        if(position==1) {
+            fragment = SecondRegisterFragment.newInstance();
+            btnBack.setVisibility(View.VISIBLE);
+            btnBack.setEnabled(true);
+        }
+        if(position==2)
+            fragment = LastRegisterFragment.newInstance();
+        if(position==3)
+            fragment = ReadyRegisterFragment.newInstance();
+
+
+        loadFragment(fragment);
+    }
+    public void back()
+    {if(position!=0){
+        position--;
+        if(position==0)
+        {
+            fragment=RegisterNameFragment.newInstance(usuarioRegistrando.getName());
+            btnBack.setVisibility(View.INVISIBLE);
+            btnBack.setEnabled(false);
+        }
+        if(position==1)
+            fragment = SecondRegisterFragment.newInstance();
+        if(position==2)
+            fragment = LastRegisterFragment.newInstance();
+
+        loadFragment(fragment);
+    }}
+
+
+    @Override
+    public void onBackPressed() {
+        back();
     }
 }

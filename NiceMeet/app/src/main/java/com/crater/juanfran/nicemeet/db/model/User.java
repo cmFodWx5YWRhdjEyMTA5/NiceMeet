@@ -4,19 +4,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class User implements Parcelable {
-    public String uid;
-    public String name;
-    public String email;
-    public String avata;
-    public String[] tags;
-    public String face;
-    public int faceNum;
-    public String insta;
-    public int instaNum;
-    public String twitt;
-    public int twittNum;
-    public String gender;
-    public long date;
+    private String uid;
+    private String name;
+    private String email;
+    private String avata;
+    private String[] tags;
+    private String face;
+    private int faceNum;
+    private String insta;
+    private int instaNum;
+    private String twitt;
+    private int twittNum;
+    private String gender;
+    private long date;
     public User()
     {}
     public User(String uid, String name, String email, String avata, String[] tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum, long date,String gender) {
