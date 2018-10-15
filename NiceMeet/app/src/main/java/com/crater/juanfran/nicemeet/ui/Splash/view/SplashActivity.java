@@ -33,22 +33,18 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     @Override
     protected void onStart() {
         super.onStart();
-        /*
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             progressBar.setVisibility(View.VISIBLE);
             presenter.obtainLikes(user.getUid());
         } else if (true) {
-            //NO es la primera vez
+            //NO es la primera vez, se mirara en preferencias
             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         } else {
             //Primera vez va a registro directo.
             startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
         }
         finish();
-        */
-
-        startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
     }
 
     private void updateUI() {

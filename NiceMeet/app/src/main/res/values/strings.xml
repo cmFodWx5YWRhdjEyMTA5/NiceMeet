@@ -42,7 +42,7 @@
     <string name="btn_SignUp">Registrarse</string>
     <string name="passwordDifferent">Contraseñas no coinciden</string>
     <string name="lbl_forgot_password">Escriba su correo y le enviaremos un mensaje para cambiar su contraseña</string>
-    <string name="hint_email">email</string>
+    <string name="hint_email">Email</string>
     <string name="btn_reset_password">Enviar mensaje</string>
     <string name="resetComplet">Mensaje Enviado</string>
     <string name="failedReset">Ha ocurrido un error, compruebe que el correo sea correcto</string>

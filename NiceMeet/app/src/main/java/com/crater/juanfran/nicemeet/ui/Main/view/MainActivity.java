@@ -21,7 +21,9 @@ import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.chat.ListChatFragment
 import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.profile.ProfileFragment;
 import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.swipe.SwipeFragment;
 import com.crater.juanfran.nicemeet.R;
+import com.crater.juanfran.nicemeet.ui.Splash.view.SplashActivity;
 import com.crater.juanfran.nicemeet.ui.profile.ProfileActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements SwipeFragment.SwipeFragmentInteractionListener,ListChatFragment.OnListChatInteractionListener, MainContract.view {
     BottomNavigationView bottomNavigationView;
@@ -54,7 +56,8 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
                         fragment= new ProfileFragment();
                          break;
                      case R.id.action_settings:
-
+                         FirebaseAuth.getInstance().signOut();
+                         startActivity(new Intent(MainActivity.this, SplashActivity.class));
                          break;
                  }
                  return loadFragment(fragment);

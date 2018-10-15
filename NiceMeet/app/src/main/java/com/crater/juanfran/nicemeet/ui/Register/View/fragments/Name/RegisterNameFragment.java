@@ -1,4 +1,4 @@
-package com.crater.juanfran.nicemeet.ui.Register.View.fragments;
+package com.crater.juanfran.nicemeet.ui.Register.View.fragments.Name;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.crater.juanfran.nicemeet.R;
 
@@ -51,19 +50,12 @@ public class RegisterNameFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener.setName(edtName.getText().toString());
         mListener = null;
     }
 
-    public boolean getName() {
-        return !edtName.getText().toString().isEmpty();
-    }
-
-    public void setName(String name) {
-       edtName.setText(name);
-    }
 
     public interface OnNameRegisterListener {
         void setName(String name);
     }
+
 }

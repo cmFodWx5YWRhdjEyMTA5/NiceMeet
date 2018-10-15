@@ -4,25 +4,24 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.db.model.User;
 import com.crater.juanfran.nicemeet.ui.Register.Contrats.RegisterContract;
 import com.crater.juanfran.nicemeet.ui.Register.Presenter.RegisterPresenter;
-import com.crater.juanfran.nicemeet.ui.Register.View.fragments.LastRegisterFragment;
+import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Tags.LastRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.ReadyRegisterFragment;
-import com.crater.juanfran.nicemeet.ui.Register.View.fragments.RegisterNameFragment;
-import com.crater.juanfran.nicemeet.ui.Register.View.fragments.SecondRegisterFragment;
+import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Name.RegisterNameFragment;
+import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Data.SecondRegisterFragment;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterContract.View, RegisterNameFragment.OnNameRegisterListener {
+public class RegisterActivity extends AppCompatActivity implements RegisterContract.View, RegisterNameFragment.OnNameRegisterListener,SecondRegisterFragment.OnDataRegisterListener,LastRegisterFragment.OnTagsRegisterListener {
 
     RegisterContract.Presenter presenter;
     private String TAG_FRAGMENTNAME="NAME";
-    int position =0;
     Button btnNext,btnBack;
     User usuarioRegistrando;
 
@@ -44,55 +43,12 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(position==1)//Nombre
-                {
-                    if(((RegisterNameFragment)fragment).getName())
-                        fragment=new SecondRegisterFragment();
-                    loadFragment(fragment);
-                    position++;
-                }else if(position==2)//Datos
-                {
-                    if(((SecondRegisterFragment)fragment).getData())
-                        fragment=new LastRegisterFragment();
-                    loadFragment(fragment);
-                    position++;
-                }else if(position==3)//Etiquetas
-                {
-                    if(((LastRegisterFragment)fragment).getTags())
-                        fragment=new ReadyRegisterFragment();
-                    loadFragment(fragment);
-                    position++;
-                }else
-                {
-                    //Guardamos nuevo usuario en servidor remoto con id de firebase y vamos a main con el usuario de firebase
-                }
-            }
-        });
+
+        } });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(position==1)//Nombre
-                {
 
-                }else if(position==2)//Datos
-                {
-                    fragment= new RegisterNameFragment();
-                    loadFragment(fragment);
-                    ((RegisterNameFragment)fragment).setName(usuarioRegistrando.getName());
-                    position--;
-                }else if(position==3)//Etiquetas
-                {
-                    fragment= new SecondRegisterFragment();
-                    loadFragment(fragment);
-                    ((SecondRegisterFragment)fragment).setDataFromUser(usuarioRegistrando);
-                    position--;
-                }else if(position ==4)
-                {
-                    fragment= new LastRegisterFragment();
-                    loadFragment(fragment);
-                    ((LastRegisterFragment)fragment).setTagsFromUser(usuarioRegistrando.getTags());
-                    position--;
-                }
             }
         });
     }
@@ -103,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.framelayu, fragment)
+                    .addToBackStack(null)
                     .commit();
             return true;
         }
@@ -147,5 +104,17 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     @Override
     public void setName(String name) {
         usuarioRegistrando.setName(name);
+    }
+
+    @Override
+    public void setData(String email, String gender, long date) {
+        usuarioRegistrando.setEmail(email);
+        usuarioRegistrando.setGender(gender);
+        usuarioRegistrando.setDate(date);
+    }
+
+    @Override
+    public void setTags(String[] tags) {
+        usuarioRegistrando.setTags(tags);
     }
 }
