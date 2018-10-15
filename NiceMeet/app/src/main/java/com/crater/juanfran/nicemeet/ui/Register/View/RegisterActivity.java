@@ -17,6 +17,8 @@ import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Tags.LastRegister
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.ReadyRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Name.RegisterNameFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Data.SecondRegisterFragment;
+import com.crater.juanfran.nicemeet.utils.ThisApplication;
+import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterContract.View, RegisterNameFragment.OnNameRegisterListener,SecondRegisterFragment.OnDataRegisterListener,LastRegisterFragment.OnTagsRegisterListener {
 
@@ -26,10 +28,14 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     User usuarioRegistrando;
 
     Fragment fragment;
+    private AppPreferencesHelper sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        sharedPreferences=((ThisApplication) getApplicationContext()).getAppPreferencesHelper();
         btnNext=findViewById(R.id.next);
         btnBack=findViewById(R.id.back);
         presenter= new RegisterPresenter(this);
@@ -103,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
     @Override
     public void setName(String name) {
+        sharedPreferences.setCurrentUserName(name);
         usuarioRegistrando.setName(name);
     }
 
