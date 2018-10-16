@@ -64,13 +64,23 @@ public class RegisterActivity extends AppCompatActivity implements
         }});
     }
 
-    private boolean loadFragment(Fragment fragment) {
+    private boolean loadFragment(Fragment fragment,boolean next) {
         if (fragment != null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.registry_frame, fragment)
-                    .commit();
-            return true;
+            if(next) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left)
+                        .replace(R.id.registry_frame, fragment)
+                        .commit();
+                return true;
+            }else {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
+                        .replace(R.id.registry_frame, fragment)
+                        .commit();
+                return true;
+            }
         }
         return false;
     }
@@ -150,7 +160,7 @@ public class RegisterActivity extends AppCompatActivity implements
         if(position==3)
             fragment = ReadyRegisterFragment.newInstance();
 
-        loadFragment(fragment);
+        loadFragment(fragment,true);
     }
     public void back()
     {if(position!=0){
@@ -166,7 +176,7 @@ public class RegisterActivity extends AppCompatActivity implements
         if(position==2)
             fragment = LastRegisterFragment.newInstance(usuarioRegistrando);
 
-        loadFragment(fragment);
+        loadFragment(fragment,false);
     }else{
     finish();
     }

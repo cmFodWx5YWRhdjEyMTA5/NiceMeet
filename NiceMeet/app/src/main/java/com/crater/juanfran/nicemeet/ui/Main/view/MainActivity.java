@@ -26,6 +26,7 @@ import com.crater.juanfran.nicemeet.ui.profile.ProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements SwipeFragment.SwipeFragmentInteractionListener,ListChatFragment.OnListChatInteractionListener, MainContract.view {
+
     BottomNavigationView bottomNavigationView;
     FrameLayout frameLayout;
     MainContract.presenter presenter;
