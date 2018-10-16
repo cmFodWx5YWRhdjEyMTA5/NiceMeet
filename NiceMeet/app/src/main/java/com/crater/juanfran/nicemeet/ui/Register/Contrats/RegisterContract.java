@@ -10,14 +10,20 @@ public interface RegisterContract {
         void onEmailError();
         void onPasswordDifferent();
         void onFirebaseError(Exception e);
+
+        void setTags(String[] tags);
     }
 
     interface Presenter {
         void validateCredentials(String password,String passwordAgain, String email);
+
+        void getTags();
     }
 
     interface Interactor
     {
         void signIn( String password,String passwordAgain, String email);
+
+        void getTags();
     }
 }

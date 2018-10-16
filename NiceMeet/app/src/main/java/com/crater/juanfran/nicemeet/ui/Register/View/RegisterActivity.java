@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -18,8 +20,12 @@ import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Tags.LastRegister
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.ReadyRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Name.RegisterNameFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Data.SecondRegisterFragment;
+import com.crater.juanfran.nicemeet.utils.CustomView;
 import com.crater.juanfran.nicemeet.utils.ThisApplication;
 import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity implements
         RegisterContract.View,
@@ -34,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity implements
 
     Fragment fragment;
     private AppPreferencesHelper sharedPreferences;
+    private String[] tags;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity implements
         transaction.commit();
         position=0;
         usuarioRegistrando=new User();
-
+        presenter.getTags();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity implements
             public void onClick(View v) {
                back();
         }});
+
     }
 
     private boolean loadFragment(Fragment fragment,boolean next) {
@@ -121,6 +129,11 @@ public class RegisterActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void setTags(String[] tags) {
+        this.tags=tags;
+    }
+
+    @Override
     public void setName(String name) {
         sharedPreferences.setCurrentUserName(name);
         usuarioRegistrando.setName(name);
@@ -142,7 +155,7 @@ public class RegisterActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void setTags(String[] tags) {
+    public void saveTags(String[] tags) {
         usuarioRegistrando.setTags(tags);
     }
 
@@ -156,7 +169,7 @@ public class RegisterActivity extends AppCompatActivity implements
             btnBack.setEnabled(true);
         }
         if(position==2)
-            fragment = LastRegisterFragment.newInstance(usuarioRegistrando);
+            fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
         if(position==3)
             fragment = ReadyRegisterFragment.newInstance();
 
@@ -174,7 +187,7 @@ public class RegisterActivity extends AppCompatActivity implements
         if(position==1)
             fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
         if(position==2)
-            fragment = LastRegisterFragment.newInstance(usuarioRegistrando);
+            fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
 
         loadFragment(fragment,false);
     }else{
@@ -187,4 +200,5 @@ public class RegisterActivity extends AppCompatActivity implements
     public void onBackPressed() {
         back();
     }
+
 }

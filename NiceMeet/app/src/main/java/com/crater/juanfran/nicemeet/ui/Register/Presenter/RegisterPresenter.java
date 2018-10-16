@@ -19,6 +19,11 @@ public class RegisterPresenter implements RegisterContract.Presenter ,RegisterIn
     }
 
     @Override
+    public void getTags() {
+        interactor.getTags();
+    }
+
+    @Override
     public void onSuccess() {
         view.onSuccess();
     }
@@ -50,5 +55,10 @@ public class RegisterPresenter implements RegisterContract.Presenter ,RegisterIn
     @Override
     public void onPasswordDifferent() {
         view.onPasswordDifferent();
+    }
+
+    @Override
+    public void setTags(String[] tags) {
+        view.setTags(tags);
     }
 }

@@ -4,6 +4,8 @@ import com.crater.juanfran.nicemeet.ui.Register.Contrats.RegisterContract;
 import com.crater.juanfran.nicemeet.utils.api.FirebaseAuthClass;
 import com.crater.juanfran.nicemeet.utils.ValidatorsClass;
 
+import java.util.Arrays;
+
 public class RegisterInteractor implements RegisterContract.Interactor, FirebaseAuthClass.FbSignUpListener {
     RegisterListener listener;
     public RegisterInteractor(RegisterListener listener) {
@@ -41,6 +43,14 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
     }
 
     @Override
+    public void getTags() {
+        //Acesso a Api o servidor local, depende de como vea la cosa
+        String[] tags = new String[]{"Music","Art","Cinematography","Design","Humor","Healt","Politics","Cooking","Reading","Photography","Coding","Travel","Gaming","Tech","Fantasy","Sci-Fi","Illustration","News","Philosophy","Manga/Anime","Writing","Science","Animation","Language","Nature","Vegan","Space","Feminism","Religion","LGBT"};
+        Arrays.sort(tags);
+        listener.setTags(tags);
+    }
+
+    @Override
     public void onError(Exception e) {
         listener.onFirebaseError(e);
     }
@@ -59,5 +69,7 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
         void onEmailError();
         void onFirebaseError(Exception e);
         void onPasswordDifferent();
+
+        void setTags(String[] tags);
     }
 }
