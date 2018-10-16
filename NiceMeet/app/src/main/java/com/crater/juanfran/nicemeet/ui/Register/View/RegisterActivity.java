@@ -118,10 +118,17 @@ public class RegisterActivity extends AppCompatActivity implements
 
 
     @Override
-    public void setData(String email, String gender, long date) {
+    public void setData(String email, String gender, long date,String password) {
         usuarioRegistrando.setEmail(email);
         usuarioRegistrando.setGender(gender);
         usuarioRegistrando.setDate(date);
+        usuarioRegistrando.setPassword(password);
+    }
+
+    @Override
+    public void openDialog() {
+        long date=0;
+        ((SecondRegisterFragment)fragment).setDate(date);
     }
 
     @Override
@@ -134,15 +141,14 @@ public class RegisterActivity extends AppCompatActivity implements
     {
         position++;
         if(position==1) {
-            fragment = SecondRegisterFragment.newInstance();
+            fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
             btnBack.setVisibility(View.VISIBLE);
             btnBack.setEnabled(true);
         }
         if(position==2)
-            fragment = LastRegisterFragment.newInstance();
+            fragment = LastRegisterFragment.newInstance(usuarioRegistrando);
         if(position==3)
             fragment = ReadyRegisterFragment.newInstance();
-
 
         loadFragment(fragment);
     }
@@ -156,9 +162,9 @@ public class RegisterActivity extends AppCompatActivity implements
             btnBack.setEnabled(false);
         }
         if(position==1)
-            fragment = SecondRegisterFragment.newInstance();
+            fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
         if(position==2)
-            fragment = LastRegisterFragment.newInstance();
+            fragment = LastRegisterFragment.newInstance(usuarioRegistrando);
 
         loadFragment(fragment);
     }else{
