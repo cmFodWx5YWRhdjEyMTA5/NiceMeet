@@ -17,9 +17,10 @@ public class User implements Parcelable {
     private int twittNum;
     private String gender;
     private long date;
+    private String password;
     public User()
     {}
-    public User(String uid, String name, String email, String avata, String[] tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum, long date,String gender) {
+    public User(String uid, String name, String email, String avata, String[] tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum, long date,String gender,String password) {
         this.uid = uid;
         this.name = name;
         this.email = email;
@@ -33,6 +34,7 @@ public class User implements Parcelable {
         this.twittNum = twittNum;
         this.date = date;
         this.gender=gender;
+        this.password=password;
     }
 
     protected User(Parcel in) {
@@ -49,6 +51,7 @@ public class User implements Parcelable {
         twittNum = in.readInt();
         date = in.readLong();
         gender=in.readString();
+        password=in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -62,6 +65,14 @@ public class User implements Parcelable {
             return new User[size];
         }
     };
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getUid() {
         return uid;
@@ -187,6 +198,6 @@ public class User implements Parcelable {
         dest.writeInt(twittNum);
         dest.writeLong(date);
         dest.writeString(gender);
-
+        dest.writeString(password);
     }
 }
