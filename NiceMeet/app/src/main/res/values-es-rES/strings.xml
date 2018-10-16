@@ -57,4 +57,13 @@
     <string name="registro">Registro</string>
     <string name="volver">Volver</string>
     <string name="siguiente">Siguiente</string>
+    <string name="date">Fecha Nacimiento</string>
+    <string name="gender">Genero</string>
+
+    <string-array name="genderspn">
+        <item>H</item>
+        <item>M</item>
+        <item>NB</item>
+        <item>Otro</item>
+    </string-array>
 </resources>

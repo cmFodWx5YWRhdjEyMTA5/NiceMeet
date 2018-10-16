@@ -54,5 +54,13 @@
     <string name="registro">Registro</string>
     <string name="volver">Volver</string>
     <string name="siguiente">Siguiente</string>
+    <string name="date">"Birth date"</string>
+    <string name="gender">Gender</string>
+    <string-array name="genderspn">
+        <item>M</item>
+        <item>F</item>
+        <item>NB</item>
+        <item>Other</item>
+    </string-array>
 
 </resources>
