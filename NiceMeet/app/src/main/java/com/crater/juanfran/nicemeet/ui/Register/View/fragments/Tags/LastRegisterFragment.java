@@ -23,7 +23,7 @@ public class LastRegisterFragment extends Fragment {
 
     private OnTagsRegisterListener mListener;
     private String[] tags;
-    private String[] selectedTags;
+    private ArrayList<String> selectedTags;
     private GridView gridView;
 
     public LastRegisterFragment()
@@ -43,6 +43,7 @@ public class LastRegisterFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tags=getArguments().getStringArray("tags");
+        selectedTags = new ArrayList<String>();
     }
 
     @Override
@@ -53,7 +54,7 @@ public class LastRegisterFragment extends Fragment {
         fillTags(tags);
         return v;
     }
-    private void fillTags(String[] tags)
+    private void fillTags(final String[] tags)
     {
         this.tags=tags;
         final CustomAdapter adapter = new CustomAdapter((tags));
@@ -69,6 +70,7 @@ public class LastRegisterFragment extends Fragment {
                     adapter.selectedPositions.add(position);
                     ((CustomView)v).display(true);
                 }
+                selectedTags.add(tags[position]);
             }
         });
     }
@@ -97,7 +99,7 @@ public class LastRegisterFragment extends Fragment {
     }
 
     public interface OnTagsRegisterListener {
-        void saveTags(String[] tags);
+        void saveTags(ArrayList<String> tags);
     }
 
 

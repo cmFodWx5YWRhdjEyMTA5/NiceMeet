@@ -1,35 +1,33 @@
 package com.crater.juanfran.nicemeet.db.Dao;
 
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.BaseColumns;
 
 import com.crater.juanfran.nicemeet.db.Contract.MyContrats;
 import com.crater.juanfran.nicemeet.db.Contract.MyOpenHelper;
-import com.crater.juanfran.nicemeet.db.model.Lang;
+import com.crater.juanfran.nicemeet.db.model.Country;
 
 import java.util.ArrayList;
 
-public class LangDao {
-    public ArrayList<Lang> loadAll() {
-        final ArrayList<Lang> LangsArrayList = new ArrayList<>();
+public class CountryDao {
+    public ArrayList<Country> loadAll() {
+        final ArrayList<Country> CountrysArrayList = new ArrayList<>();
         final SQLiteDatabase sqLiteDatabase = MyOpenHelper.getInstance().openDateBase();
-        Cursor cursor = sqLiteDatabase.query(MyContrats.Lang.TABLE_NAME,
-                MyContrats.Lang.ALL_COLUMN,
+        Cursor cursor = sqLiteDatabase.query(MyContrats.Country.TABLE_NAME,
+                MyContrats.Country.ALL_COLUMN,
                 null,
                 null,
                 null,
                 null,
-                MyContrats.Lang.DEFAULT_SORT,
+                MyContrats.Country.DEFAULT_SORT,
                 null);
         if (cursor.moveToFirst()) {
             do {
-                Lang Lang = new Lang(cursor.getInt(0), cursor.getString(1));
-                LangsArrayList.add(Lang);
+                Country Country = new Country(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+                CountrysArrayList.add(Country);
             } while (cursor.moveToNext());
         }
         MyOpenHelper.getInstance().closeDateBase();
-        return LangsArrayList;
+        return CountrysArrayList;
     }
 }

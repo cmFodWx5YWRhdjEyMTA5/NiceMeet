@@ -156,8 +156,7 @@ public class RegisterActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void saveTags(String[] tags) {
-        Arrays.sort(tags);
+    public void saveTags(ArrayList<String> tags) {
         usuarioRegistrando.setTags(tags);
     }
 

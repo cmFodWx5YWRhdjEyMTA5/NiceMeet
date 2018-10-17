@@ -3,12 +3,14 @@ package com.crater.juanfran.nicemeet.db.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class User implements Parcelable {
     private String uid;
     private String name;
     private String email;
     private String avata;
-    private String[] tags;
+    private ArrayList<String> tags;
     private String face;
     private int faceNum;
     private String insta;
@@ -20,7 +22,7 @@ public class User implements Parcelable {
     private String password;
     public User()
     {}
-    public User(String uid, String name, String email, String avata, String[] tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum, long date,String gender,String password) {
+    public User(String uid, String name, String email, String avata, ArrayList<String> tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum, long date,String gender,String password) {
         this.uid = uid;
         this.name = name;
         this.email = email;
@@ -37,34 +39,6 @@ public class User implements Parcelable {
         this.password=password;
     }
 
-    protected User(Parcel in) {
-        uid = in.readString();
-        name = in.readString();
-        email = in.readString();
-        avata = in.readString();
-        tags = in.createStringArray();
-        face = in.readString();
-        faceNum = in.readInt();
-        insta = in.readString();
-        instaNum = in.readInt();
-        twitt = in.readString();
-        twittNum = in.readInt();
-        date = in.readLong();
-        gender=in.readString();
-        password=in.readString();
-    }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     public String getPassword() {
         return password;
@@ -106,11 +80,11 @@ public class User implements Parcelable {
         this.avata = avata;
     }
 
-    public String[] getTags() {
+    public ArrayList<String> getTags() {
         return tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(ArrayList<String> tags) {
         this.tags = tags;
     }
 
@@ -170,11 +144,6 @@ public class User implements Parcelable {
         this.date = date;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
     public String getGender() {
         return gender;
     }
@@ -183,21 +152,56 @@ public class User implements Parcelable {
         this.gender = gender;
     }
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(uid);
         dest.writeString(name);
         dest.writeString(email);
         dest.writeString(avata);
-        dest.writeStringArray(tags);
+        dest.writeStringList(tags);
         dest.writeString(face);
         dest.writeInt(faceNum);
         dest.writeString(insta);
         dest.writeInt(instaNum);
         dest.writeString(twitt);
         dest.writeInt(twittNum);
-        dest.writeLong(date);
         dest.writeString(gender);
+        dest.writeLong(date);
         dest.writeString(password);
     }
+    protected User(Parcel in) {
+        uid = in.readString();
+        name = in.readString();
+        email = in.readString();
+        avata = in.readString();
+        tags = in.createStringArrayList();
+        face = in.readString();
+        faceNum = in.readInt();
+        insta = in.readString();
+        instaNum = in.readInt();
+        twitt = in.readString();
+        twittNum = in.readInt();
+        gender = in.readString();
+        date = in.readLong();
+        password = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
 }
