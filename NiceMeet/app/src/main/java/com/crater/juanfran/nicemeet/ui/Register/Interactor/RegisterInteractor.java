@@ -60,7 +60,9 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
     public void getNationLangs() {
         ArrayList<String> countries = CountryRepository.getInstance().getCountrys();
         ArrayList<String> langs = LangRepository.getInstance().getLangs();
-        listener.setNationLangs(countries,langs);
+        String [] countryArray = countries.toArray(new String[countries.size()]);
+        String [] langArray =  langs.toArray(new String[langs.size()]);
+        listener.setNationLangs(countryArray,langArray);
     }
 
     @Override
@@ -85,6 +87,6 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
 
         void setTags(String[] tags);
 
-        void setNationLangs(ArrayList<String> countries, ArrayList<String> langs);
+        void setNationLangs(String[] countries, String[] langs);
     }
 }

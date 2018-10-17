@@ -70,7 +70,7 @@ public class RegisterPresenter implements RegisterContract.Presenter ,RegisterIn
     }
 
     @Override
-    public void setNationLangs(ArrayList<String> countries, ArrayList<String> langs) {
+    public void setNationLangs(String[] countries, String[] langs) {
         view.setNationLangs(countries,langs);
     }
 }

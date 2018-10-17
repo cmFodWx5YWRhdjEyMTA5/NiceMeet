@@ -133,9 +133,9 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
     }
 
     @Override
-    public void setNationLangs(ArrayList<String> countries, ArrayList<String> langs) {
-        this.nations= (String[]) countries.toArray();
-        this.langs= (String[]) langs.toArray();
+    public void setNationLangs(String[] countries, String[] langs) {
+        this.nations= countries;
+        this.langs= langs;
     }
 
     @Override

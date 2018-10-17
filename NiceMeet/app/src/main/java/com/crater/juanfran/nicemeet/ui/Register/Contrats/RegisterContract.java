@@ -15,7 +15,7 @@ public interface RegisterContract {
 
         void setTags(String[] tags);
 
-        void setNationLangs(ArrayList<String> countries, ArrayList<String> langs);
+        void setNationLangs(String[] countries, String[] langs);
     }
 
     interface Presenter {

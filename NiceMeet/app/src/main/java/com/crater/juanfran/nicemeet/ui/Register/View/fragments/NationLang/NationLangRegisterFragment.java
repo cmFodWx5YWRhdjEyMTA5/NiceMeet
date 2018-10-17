@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.db.model.User;
@@ -44,7 +46,11 @@ public class NationLangRegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register_nala, container, false);
+        AutoCompleteTextView autoCompleteTextView = v.findViewById(R.id.autoCompleteTextView);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>((Context) mListener,
+                android.R.layout.simple_dropdown_item_1line, natios);
 
+        autoCompleteTextView.setAdapter(adapter);
         return v;
     }
 

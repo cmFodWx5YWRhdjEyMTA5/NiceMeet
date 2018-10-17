@@ -33,8 +33,7 @@ public class SwipeFragment extends Fragment implements SwipeStack.SwipeStackList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mData=new ArrayList<>();
-        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"aa",0,(long)12,"fem","ea"));
-        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"aa",0,(long)12,"fem","ad"));
+        mData.add(new User("aa","aa","aa","aa",null,"aa",0,"aa",0,"",0,"",(long)12,"ea",new ArrayList<String>(),"n"));
     }
 
     @Override
