@@ -50,7 +50,8 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
         //Acesso a Api o servidor local, depende de como vea la cosa
      //   String[] tags = new String[]{"Music","Art","Cinematography","Design","Humor","Healt","Politics","Cooking","Reading","Photography","Coding","Travel","Gaming","Tech","Fantasy","Sci-Fi","Illustration","News","Philosophy","Manga/Anime","Writing","Science","Animation","Language","Nature","Vegan","Space","Feminism","Religion","LGBT"};
         ArrayList<String> tags= TagRepository.getInstance().getTags();
-        listener.setTags(Arrays.sort(tags.toArray()));
+        String [] tagsArray = tags.toArray(new String[tags.size()]);
+        listener.setTags(tagsArray);
     }
 
     @Override

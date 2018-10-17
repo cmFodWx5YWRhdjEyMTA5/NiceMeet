@@ -25,6 +25,7 @@ import com.crater.juanfran.nicemeet.utils.ThisApplication;
 import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity implements
@@ -156,6 +157,7 @@ public class RegisterActivity extends AppCompatActivity implements
 
     @Override
     public void saveTags(String[] tags) {
+        Arrays.sort(tags);
         usuarioRegistrando.setTags(tags);
     }
 
