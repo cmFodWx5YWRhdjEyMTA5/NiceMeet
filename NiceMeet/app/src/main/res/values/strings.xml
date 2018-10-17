@@ -56,6 +56,7 @@
     <string name="siguiente">Siguiente</string>
     <string name="date">"Birth date"</string>
     <string name="gender">Gender</string>
+    <string name="from">Where are you from?</string>
     <string-array name="genderspn">
         <item>M</item>
         <item>F</item>
