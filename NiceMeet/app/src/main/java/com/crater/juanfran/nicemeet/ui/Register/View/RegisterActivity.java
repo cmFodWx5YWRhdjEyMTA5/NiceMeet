@@ -4,11 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -16,18 +12,15 @@ import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.db.model.User;
 import com.crater.juanfran.nicemeet.ui.Register.Contrats.RegisterContract;
 import com.crater.juanfran.nicemeet.ui.Register.Presenter.RegisterPresenter;
-import com.crater.juanfran.nicemeet.ui.Register.View.fragments.NationLangRegisterFragment;
+import com.crater.juanfran.nicemeet.ui.Register.View.fragments.NationLang.NationLangRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Tags.LastRegisterFragment;
-import com.crater.juanfran.nicemeet.ui.Register.View.fragments.ReadyRegisterFragment;
+import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Ready.ReadyRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Name.RegisterNameFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Data.SecondRegisterFragment;
-import com.crater.juanfran.nicemeet.utils.CustomView;
 import com.crater.juanfran.nicemeet.utils.ThisApplication;
 import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity implements
         RegisterContract.View,

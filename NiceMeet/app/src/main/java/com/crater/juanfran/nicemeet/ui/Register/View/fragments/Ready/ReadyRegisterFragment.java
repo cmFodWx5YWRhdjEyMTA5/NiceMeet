@@ -1,4 +1,4 @@
-package com.crater.juanfran.nicemeet.ui.Register.View.fragments;
+package com.crater.juanfran.nicemeet.ui.Register.View.fragments.Ready;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
