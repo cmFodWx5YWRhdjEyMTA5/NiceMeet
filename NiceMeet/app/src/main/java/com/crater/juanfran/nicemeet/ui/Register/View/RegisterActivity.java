@@ -16,6 +16,7 @@ import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.db.model.User;
 import com.crater.juanfran.nicemeet.ui.Register.Contrats.RegisterContract;
 import com.crater.juanfran.nicemeet.ui.Register.Presenter.RegisterPresenter;
+import com.crater.juanfran.nicemeet.ui.Register.View.fragments.NationLangRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Tags.LastRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.ReadyRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Name.RegisterNameFragment;
@@ -32,7 +33,8 @@ public class RegisterActivity extends AppCompatActivity implements
         RegisterContract.View,
         RegisterNameFragment.OnNameRegisterListener,
         SecondRegisterFragment.OnDataRegisterListener,
-        LastRegisterFragment.OnTagsRegisterListener {
+        LastRegisterFragment.OnTagsRegisterListener,
+NationLangRegisterFragment.OnNatioLangRegisterListener{
 
     RegisterContract.Presenter presenter;
     Button btnNext,btnBack;
@@ -42,6 +44,8 @@ public class RegisterActivity extends AppCompatActivity implements
     Fragment fragment;
     private AppPreferencesHelper sharedPreferences;
     private String[] tags;
+    private String[] langs;
+    private String[] nations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity implements
         position=0;
         usuarioRegistrando=new User();
         presenter.getTags();
+        presenter.getNationLangs();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,6 +140,12 @@ public class RegisterActivity extends AppCompatActivity implements
     }
 
     @Override
+    public void setNationLangs(ArrayList<String> countries, ArrayList<String> langs) {
+        this.nations= (String[]) countries.toArray();
+        this.langs= (String[]) langs.toArray();
+    }
+
+    @Override
     public void setName(String name) {
         sharedPreferences.setCurrentUserName(name);
         usuarioRegistrando.setName(name);
@@ -170,8 +181,10 @@ public class RegisterActivity extends AppCompatActivity implements
             btnBack.setEnabled(true);
         }
         if(position==2)
-            fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
+            fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando,langs,nations);
         if(position==3)
+            fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
+        if(position==4)
             fragment = ReadyRegisterFragment.newInstance();
 
         loadFragment(fragment,true);
@@ -188,6 +201,8 @@ public class RegisterActivity extends AppCompatActivity implements
         if(position==1)
             fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
         if(position==2)
+            fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando,langs,nations);
+        if(position==3)
             fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
 
         loadFragment(fragment,false);
@@ -202,4 +217,9 @@ public class RegisterActivity extends AppCompatActivity implements
         back();
     }
 
+    @Override
+    public void saveNL(ArrayList<String> langs, String nati) {
+        usuarioRegistrando.setLanguages(langs);
+        usuarioRegistrando.setNation(nati);
+    }
 }

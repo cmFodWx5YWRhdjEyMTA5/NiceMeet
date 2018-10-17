@@ -33,9 +33,12 @@ public class LangRepository {
 
         }
 
-        public ArrayList<Lang> getLangs()
+        public ArrayList<String> getLangs()
         {
             langs=dao.loadAll();
-            return langs;
+            ArrayList<String> LangString = new ArrayList<>();
+            for (int i=0;i<langs.size();i++)
+                LangString.add(langs.get(i).get_name());
+            return LangString;
         }
 }

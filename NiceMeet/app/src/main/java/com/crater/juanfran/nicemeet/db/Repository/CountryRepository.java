@@ -31,9 +31,12 @@ public class CountryRepository {
 
     }
 
-    public ArrayList<Country> getCountrys()
+    public ArrayList<String> getCountrys()
     {
         Countrys=dao.loadAll();
-        return Countrys;
+        ArrayList<String> CountryString = new ArrayList<>();
+        for (int i=0;i<Countrys.size();i++)
+            CountryString.add(Countrys.get(i).getName());
+        return CountryString;
     }
 }

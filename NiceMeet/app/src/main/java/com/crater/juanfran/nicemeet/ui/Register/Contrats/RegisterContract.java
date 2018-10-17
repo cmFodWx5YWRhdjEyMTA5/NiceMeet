@@ -1,5 +1,7 @@
 package com.crater.juanfran.nicemeet.ui.Register.Contrats;
 
+import java.util.ArrayList;
+
 public interface RegisterContract {
 
     interface View {
@@ -12,12 +14,16 @@ public interface RegisterContract {
         void onFirebaseError(Exception e);
 
         void setTags(String[] tags);
+
+        void setNationLangs(ArrayList<String> countries, ArrayList<String> langs);
     }
 
     interface Presenter {
         void validateCredentials(String password,String passwordAgain, String email);
 
         void getTags();
+
+        void getNationLangs();
     }
 
     interface Interactor
@@ -25,5 +31,7 @@ public interface RegisterContract {
         void signIn( String password,String passwordAgain, String email);
 
         void getTags();
+
+        void getNationLangs();
     }
 }

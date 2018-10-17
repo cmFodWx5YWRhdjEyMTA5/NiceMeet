@@ -20,9 +20,10 @@ public class User implements Parcelable {
     private String gender;
     private long date;
     private String password;
-    public User()
-    {}
-    public User(String uid, String name, String email, String avata, ArrayList<String> tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum, long date,String gender,String password) {
+    private ArrayList<String> languages;
+    private String nation;
+
+    public User(String uid, String name, String email, String avata, ArrayList<String> tags, String face, int faceNum, String insta, int instaNum, String twitt, int twittNum, String gender, long date, String password, ArrayList<String> languages, String nation) {
         this.uid = uid;
         this.name = name;
         this.email = email;
@@ -34,11 +35,62 @@ public class User implements Parcelable {
         this.instaNum = instaNum;
         this.twitt = twitt;
         this.twittNum = twittNum;
+        this.gender = gender;
         this.date = date;
-        this.gender=gender;
-        this.password=password;
+        this.password = password;
+        this.languages = languages;
+        this.nation = nation;
     }
 
+    protected User(Parcel in) {
+        uid = in.readString();
+        name = in.readString();
+        email = in.readString();
+        avata = in.readString();
+        tags = in.createStringArrayList();
+        face = in.readString();
+        faceNum = in.readInt();
+        insta = in.readString();
+        instaNum = in.readInt();
+        twitt = in.readString();
+        twittNum = in.readInt();
+        gender = in.readString();
+        date = in.readLong();
+        password = in.readString();
+        languages = in.createStringArrayList();
+        nation = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
+
+    public ArrayList<String> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(ArrayList<String> languages) {
+        this.languages = languages;
+    }
+
+    public String getNation() {
+        return nation;
+    }
+
+    public void setNation(String nation) {
+        this.nation = nation;
+    }
+
+    public User()
+    {}
 
     public String getPassword() {
         return password;
@@ -152,7 +204,6 @@ public class User implements Parcelable {
         this.gender = gender;
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -174,34 +225,7 @@ public class User implements Parcelable {
         dest.writeString(gender);
         dest.writeLong(date);
         dest.writeString(password);
+        dest.writeStringList(languages);
+        dest.writeString(nation);
     }
-    protected User(Parcel in) {
-        uid = in.readString();
-        name = in.readString();
-        email = in.readString();
-        avata = in.readString();
-        tags = in.createStringArrayList();
-        face = in.readString();
-        faceNum = in.readInt();
-        insta = in.readString();
-        instaNum = in.readInt();
-        twitt = in.readString();
-        twittNum = in.readInt();
-        gender = in.readString();
-        date = in.readLong();
-        password = in.readString();
-    }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
-
 }

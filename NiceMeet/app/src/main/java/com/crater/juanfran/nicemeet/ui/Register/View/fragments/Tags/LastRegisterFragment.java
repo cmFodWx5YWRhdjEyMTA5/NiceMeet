@@ -66,11 +66,13 @@ public class LastRegisterFragment extends Fragment {
                 if (selectedIndex > -1) {
                     adapter.selectedPositions.remove(selectedIndex);
                     ((CustomView)v).display(false);
+                    selectedTags.remove(tags[position]);
                 } else {
                     adapter.selectedPositions.add(position);
                     ((CustomView)v).display(true);
+                    selectedTags.add(tags[position]);
                 }
-                selectedTags.add(tags[position]);
+
             }
         });
     }

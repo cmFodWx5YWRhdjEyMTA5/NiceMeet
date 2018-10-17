@@ -1,5 +1,7 @@
 package com.crater.juanfran.nicemeet.ui.Register.Interactor;
 
+import com.crater.juanfran.nicemeet.db.Repository.CountryRepository;
+import com.crater.juanfran.nicemeet.db.Repository.LangRepository;
 import com.crater.juanfran.nicemeet.db.Repository.TagRepository;
 import com.crater.juanfran.nicemeet.db.model.Tag;
 import com.crater.juanfran.nicemeet.ui.Register.Contrats.RegisterContract;
@@ -55,6 +57,13 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
     }
 
     @Override
+    public void getNationLangs() {
+        ArrayList<String> countries = CountryRepository.getInstance().getCountrys();
+        ArrayList<String> langs = LangRepository.getInstance().getLangs();
+        listener.setNationLangs(countries,langs);
+    }
+
+    @Override
     public void onError(Exception e) {
         listener.onFirebaseError(e);
     }
@@ -75,5 +84,7 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
         void onPasswordDifferent();
 
         void setTags(String[] tags);
+
+        void setNationLangs(ArrayList<String> countries, ArrayList<String> langs);
     }
 }

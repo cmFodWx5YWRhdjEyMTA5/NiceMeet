@@ -3,6 +3,8 @@ package com.crater.juanfran.nicemeet.ui.Register.Presenter;
 import com.crater.juanfran.nicemeet.ui.Register.Contrats.RegisterContract;
 import com.crater.juanfran.nicemeet.ui.Register.Interactor.RegisterInteractor;
 
+import java.util.ArrayList;
+
 public class RegisterPresenter implements RegisterContract.Presenter ,RegisterInteractor.RegisterListener{
 
     RegisterContract.Interactor interactor;
@@ -21,6 +23,11 @@ public class RegisterPresenter implements RegisterContract.Presenter ,RegisterIn
     @Override
     public void getTags() {
         interactor.getTags();
+    }
+
+    @Override
+    public void getNationLangs() {
+        interactor.getNationLangs();
     }
 
     @Override
@@ -60,5 +67,10 @@ public class RegisterPresenter implements RegisterContract.Presenter ,RegisterIn
     @Override
     public void setTags(String[] tags) {
         view.setTags(tags);
+    }
+
+    @Override
+    public void setNationLangs(ArrayList<String> countries, ArrayList<String> langs) {
+        view.setNationLangs(countries,langs);
     }
 }
