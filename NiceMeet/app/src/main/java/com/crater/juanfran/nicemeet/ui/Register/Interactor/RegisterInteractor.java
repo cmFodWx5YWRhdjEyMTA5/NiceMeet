@@ -1,15 +1,12 @@
 package com.crater.juanfran.nicemeet.ui.Register.Interactor;
 
-import com.crater.juanfran.nicemeet.db.Repository.CountryRepository;
 import com.crater.juanfran.nicemeet.db.Repository.LangRepository;
 import com.crater.juanfran.nicemeet.db.Repository.TagRepository;
-import com.crater.juanfran.nicemeet.db.model.Tag;
 import com.crater.juanfran.nicemeet.ui.Register.Contrats.RegisterContract;
 import com.crater.juanfran.nicemeet.utils.api.FirebaseAuthClass;
 import com.crater.juanfran.nicemeet.utils.ValidatorsClass;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class RegisterInteractor implements RegisterContract.Interactor, FirebaseAuthClass.FbSignUpListener {
     RegisterListener listener;
@@ -58,11 +55,9 @@ public class RegisterInteractor implements RegisterContract.Interactor, Firebase
 
     @Override
     public void getNationLangs() {
-        ArrayList<String> countries = CountryRepository.getInstance().getCountrys();
         ArrayList<String> langs = LangRepository.getInstance().getLangs();
-        String [] countryArray = countries.toArray(new String[countries.size()]);
         String [] langArray =  langs.toArray(new String[langs.size()]);
-        listener.setNationLangs(countryArray,langArray);
+        listener.setNationLangs(null,langArray);
     }
 
     @Override

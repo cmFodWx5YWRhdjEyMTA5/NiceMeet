@@ -175,7 +175,7 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
             btnBack.setEnabled(true);
         }
         if(position==2)
-            fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando,langs,nations);
+            fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando);
         if(position==3)
             fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
         if(position==4)
@@ -195,7 +195,7 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
         if(position==1)
             fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
         if(position==2)
-            fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando,langs,nations);
+            fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando);
         if(position==3)
             fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
 

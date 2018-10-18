@@ -89,7 +89,6 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toEndOf="@+id/txtDate"
         app:layout_constraintTop_toTopOf="@+id/txtDate" />
 
@@ -100,12 +99,15 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:background="@color/colorAccent"
         android:backgroundTint="@android:color/white"
+        android:popupBackground="@color/colorAccent"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:spinnerMode="dialog"
+        android:tooltipText="@string/gender"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toEndOf="@+id/edt_Date"
         app:layout_constraintTop_toBottomOf="@+id/txtGender" />
 

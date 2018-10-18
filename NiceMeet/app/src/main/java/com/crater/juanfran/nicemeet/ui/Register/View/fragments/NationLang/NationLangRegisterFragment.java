@@ -16,21 +16,15 @@ import java.util.ArrayList;
 
 public class NationLangRegisterFragment extends Fragment {
     private OnNatioLangRegisterListener mListener;
-    private String[] langs;
-    private ArrayList<String> selectedLangs;
-    private String[] natios;
-    private String selectedNation;
 
     public NationLangRegisterFragment()
     {
 
     }
 
-    public static Fragment newInstance(User usuarioRegistrando,String[] lang, String[] nati) {
+    public static Fragment newInstance(User usuarioRegistrand) {
         NationLangRegisterFragment fragment = new NationLangRegisterFragment();
         Bundle args = new Bundle();
-        args.putStringArray("lang",lang);
-        args.putStringArray("nati",nati);
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,19 +32,12 @@ public class NationLangRegisterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        langs=getArguments().getStringArray("lang");
-        natios=getArguments().getStringArray("nati");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register_nala, container, false);
-        AutoCompleteTextView autoCompleteTextView = v.findViewById(R.id.autoCompleteTextView);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>((Context) mListener,
-                android.R.layout.simple_dropdown_item_1line, natios);
-
-        autoCompleteTextView.setAdapter(adapter);
         return v;
     }
 
@@ -73,7 +60,7 @@ public class NationLangRegisterFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        mListener.saveNL(selectedLangs,selectedNation);
+      //mListener.saveNL();
         super.onDestroy();
 
     }
