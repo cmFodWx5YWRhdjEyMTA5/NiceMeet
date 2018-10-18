@@ -13,6 +13,8 @@ import com.crater.juanfran.nicemeet.ui.Splash.presenter.SplashPresenter;
 import com.crater.juanfran.nicemeet.ui.Splash.contract.SplashContract;
 import com.crater.juanfran.nicemeet.ui.login.view.LoginActivity;
 import com.crater.juanfran.nicemeet.utils.DialogsUtils;
+import com.crater.juanfran.nicemeet.utils.ThisApplication;
+import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -21,10 +23,13 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
     private FirebaseAuth mAuth;
     ProgressBar progressBar;
     SplashContract.Presenter presenter;
+
+    private AppPreferencesHelper sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        sharedPreferences=((ThisApplication) getApplicationContext()).getAppPreferencesHelper();
        mAuth=FirebaseAuth.getInstance();
        progressBar=findViewById(R.id.marker_progress);
        presenter= new SplashPresenter(this);
@@ -36,13 +41,11 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
             progressBar.setVisibility(View.VISIBLE);
-            presenter.obtainLikes(user.getUid());
-        } else if (true) {
-            //NO es la primera vez, se mirara en preferencias
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-        } else {
-            //Primera vez va a registro directo.
+       //     presenter.obtainLikes(user.getUid());
+        } else if (sharedPreferences.getNewUser()) {
             startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
+        } else {
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         }
         finish();
     }

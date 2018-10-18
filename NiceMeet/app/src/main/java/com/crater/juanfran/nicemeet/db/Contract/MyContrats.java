@@ -312,4 +312,26 @@ public static final int DATABASE_VERSION=1;
 
     }
 
+    public static class Likes {
+        public static final String TABLE_NAME = "likes";
+        public static final String COLUMN_LIKER = "uidliker";
+        public static final String COLUMN_LIKED = "uidliked";
+        public static final String COLUMN_DATE = "date";
+        public static final String[] ALL_COLUMN = {COLUMN_LIKER,COLUMN_LIKED,COLUMN_DATE};
+        public static final String DEFAULT_SORT = COLUMN_DATE;
+        public static final String SQL_CREATE_ENTRIES = String.format(
+                "CREATE TABLE %s ("+
+                        "%s,"+
+                       " %s,"+
+                       " %s,"+
+                      "  PRIMARY KEY (%s, %s))",
+                TABLE_NAME,
+                COLUMN_LIKER,
+                COLUMN_LIKED,
+                COLUMN_DATE,
+                COLUMN_LIKER,
+                COLUMN_LIKED);
+
+        public static final String SQL_DELETE_ENTRIES = String.format("DROP TABLE IF EXISTS %s", TABLE_NAME);
+    }
 }

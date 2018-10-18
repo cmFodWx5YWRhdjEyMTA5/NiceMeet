@@ -49,6 +49,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL(MyContrats.Country.SQL_CREATE_ENTRIES);
             sqLiteDatabase.execSQL(MyContrats.Country.SQL_INSERT_ENTRIES);
             sqLiteDatabase.execSQL(MyContrats.Lang.SQL_CREATE_ENTRIES);
+            sqLiteDatabase.execSQL(MyContrats.Likes.SQL_CREATE_ENTRIES);
             sqLiteDatabase.setTransactionSuccessful();
         }catch (SQLiteException e)
         {
@@ -66,6 +67,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
             db.execSQL(MyContrats.Tags.SQL_DELETE_ENTRIES);
             db.execSQL(MyContrats.Lang.SQL_DELETE_ENTRIES);
             db.execSQL(MyContrats.Country.SQL_DELETE_ENTRIES);
+            sqLiteDatabase.execSQL(MyContrats.Likes.SQL_DELETE_ENTRIES);
             onCreate(db);
             db.setTransactionSuccessful();
         }catch (SQLiteException e)
