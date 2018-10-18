@@ -49,6 +49,14 @@ public class AppPreferencesHelper implements PreferencesHelper.GeneralPreference
     public void setCurrentUserName(String name) {
         preferences.edit().putString(PREF_KEY_CURRENT_USER_NAME,name).apply();
     }
+    public String getCurrentUserUID() {
+        String uid=preferences.getString(PREF_KEY_CURRENT_USER_UID, null);
+        return uid;
+    }
+
+    public void setCurrentUserUID(String uid) {
+        preferences.edit().putString(PREF_KEY_CURRENT_USER_UID,uid).apply();
+    }
     public Boolean getNewUser() {
         Boolean name=preferences.getBoolean(PREF_KEY_NEW_USER,true);
         return name;

@@ -23,6 +23,8 @@ import com.crater.juanfran.nicemeet.ui.Main.view.Fragments.swipe.SwipeFragment;
 import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.ui.Splash.view.SplashActivity;
 import com.crater.juanfran.nicemeet.ui.profile.ProfileActivity;
+import com.crater.juanfran.nicemeet.utils.ThisApplication;
+import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements SwipeFragment.SwipeFragmentInteractionListener,ListChatFragment.OnListChatInteractionListener, MainContract.view {
@@ -31,11 +33,13 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
     FrameLayout frameLayout;
     MainContract.presenter presenter;
     boolean notifications =false;
+    private AppPreferencesHelper sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         presenter=new MainPresenter(this);
+        sharedPreferences=((ThisApplication) getApplicationContext()).getAppPreferencesHelper();
         frameLayout=findViewById(R.id.framelayu);
         bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -58,7 +62,10 @@ public class MainActivity extends AppCompatActivity implements SwipeFragment.Swi
                          break;
                      case R.id.action_settings:
                          FirebaseAuth.getInstance().signOut();
+                         sharedPreferences.setCurrentUserName(null);
+                         sharedPreferences.setCurrentUserUID(null);
                          startActivity(new Intent(MainActivity.this, SplashActivity.class));
+                         finish();
                          break;
                  }
                  return loadFragment(fragment);

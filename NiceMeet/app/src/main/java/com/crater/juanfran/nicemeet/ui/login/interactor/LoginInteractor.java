@@ -4,6 +4,8 @@ import com.crater.juanfran.nicemeet.utils.ErrorsClass;
 import com.crater.juanfran.nicemeet.utils.ValidatorsClass;
 import com.crater.juanfran.nicemeet.utils.api.FirebaseAuthClass;
 import com.crater.juanfran.nicemeet.ui.login.contract.LoginContract;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginInteractor implements LoginContract.interactor, FirebaseAuthClass.FbSignInListener {
 

@@ -44,9 +44,8 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
        //     presenter.obtainLikes(user.getUid());
         } else if (sharedPreferences.getNewUser()) {
             startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
-        } else {
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         }
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
         finish();
     }
 
