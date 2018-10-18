@@ -93,6 +93,7 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
     }
     @Override
     public void onSuccess() {
+        sharedPreferences.setNewUser(false);
         finish();
     }
 

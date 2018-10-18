@@ -15,7 +15,7 @@ public class AppPreferencesHelper implements PreferencesHelper.GeneralPreference
     }
 
 
-    public static final String PREF_NAME = "Inventory_pref";
+    public static final String PREF_NAME = "NiceMeetPref";
 
     private final SharedPreferences preferences;
     private static AppPreferencesHelper instance;
@@ -24,7 +24,7 @@ public class AppPreferencesHelper implements PreferencesHelper.GeneralPreference
 
 
     private AppPreferencesHelper() {
-        this.preferences = ((Application) ThisApplication.getContext()).getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        this.preferences = (ThisApplication.getContext()).getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         listener= new SharedPreferences.OnSharedPreferenceChangeListener() {
             @Override
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
@@ -48,6 +48,14 @@ public class AppPreferencesHelper implements PreferencesHelper.GeneralPreference
 
     public void setCurrentUserName(String name) {
         preferences.edit().putString(PREF_KEY_CURRENT_USER_NAME,name).apply();
+    }
+    public Boolean getNewUser() {
+        Boolean name=preferences.getBoolean(PREF_KEY_NEW_USER,true);
+        return name;
+    }
+
+    public void setNewUser(Boolean bool) {
+        preferences.edit().putBoolean(PREF_KEY_CURRENT_USER_NAME,bool).apply();
     }
 
 }
