@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.db.model.Conversation;
-import com.crater.juanfran.nicemeet.db.model.Message;
 
 import java.util.ArrayList;
 
