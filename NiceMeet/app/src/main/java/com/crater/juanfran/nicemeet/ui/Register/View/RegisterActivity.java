@@ -163,21 +163,21 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
     public void openDialog() {
 
         final Calendar hoy=Calendar.getInstance();
-        final int year= hoy.get(Calendar.YEAR);
-        final int month= hoy.get(Calendar.MONTH);
-        final int day= hoy.get(Calendar.DAY_OF_MONTH);
+        final int[] year = {hoy.get(Calendar.YEAR)};
+        final int[] month = {hoy.get(Calendar.MONTH)};
+        final int[] day = {hoy.get(Calendar.DAY_OF_MONTH)};
 
         final DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
-                 arg1 = year;
-                 arg2 = month;
-                 arg3 = day;
-                hoy.set(year, month, day);
+                 year[0] =arg1;
+                 month[0] =arg2;
+                 day[0] =arg3;
+                hoy.set(year[0], month[0], day[0]);
                 ((SecondRegisterFragment)fragment).setDate(hoy.getTimeInMillis());
             }};
 
-        DatePickerDialog pickerDialog= new DatePickerDialog(this, myDateListener, year, month, day);
+        DatePickerDialog pickerDialog= new DatePickerDialog(this, myDateListener, year[0], month[0], day[0]);
         pickerDialog.show();
 
     }
