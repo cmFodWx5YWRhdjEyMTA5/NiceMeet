@@ -57,6 +57,8 @@
     <string name="date">"Birth date"</string>
     <string name="gender">Gender</string>
     <string name="from">Where are you from?</string>
+    <string name="welcome">Welcome</string>
+    <string name="moreinfo">continue with the registration before choosing your tags!</string>
     <string-array name="genderspn">
         <item>M</item>
         <item>F</item>

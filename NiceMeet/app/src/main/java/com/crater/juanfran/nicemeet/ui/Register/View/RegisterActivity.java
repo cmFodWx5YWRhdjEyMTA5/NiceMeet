@@ -1,11 +1,13 @@
 package com.crater.juanfran.nicemeet.ui.Register.View;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.crater.juanfran.nicemeet.R;
@@ -20,7 +22,10 @@ import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Data.SecondRegist
 import com.crater.juanfran.nicemeet.utils.ThisApplication;
 import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class RegisterActivity extends AppCompatActivity implements
         RegisterContract.View,
@@ -156,10 +161,26 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
 
     @Override
     public void openDialog() {
-        long date=0;
-        ((SecondRegisterFragment)fragment).setDate(date);
-    }
 
+        final Calendar hoy=Calendar.getInstance();
+        final int year= hoy.get(Calendar.YEAR);
+        final int month= hoy.get(Calendar.MONTH);
+        final int day= hoy.get(Calendar.DAY_OF_MONTH);
+
+        final DatePickerDialog.OnDateSetListener myDateListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker arg0, int arg1, int arg2, int arg3) {
+                 arg1 = year;
+                 arg2 = month;
+                 arg3 = day;
+                hoy.set(year, month, day);
+                ((SecondRegisterFragment)fragment).setDate(hoy.getTimeInMillis());
+            }};
+
+        DatePickerDialog pickerDialog= new DatePickerDialog(this, myDateListener, year, month, day);
+        pickerDialog.show();
+
+    }
     @Override
     public void saveTags(ArrayList<String> tags) {
         usuarioRegistrando.setTags(tags);

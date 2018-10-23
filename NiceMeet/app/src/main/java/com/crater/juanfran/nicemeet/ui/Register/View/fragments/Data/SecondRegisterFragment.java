@@ -20,10 +20,12 @@ public class SecondRegisterFragment extends Fragment {
     Spinner spinner;
     EditText edtMail,edtDate,edtPassword;
     long date;
+    private User user;
 
     public static SecondRegisterFragment newInstance(User usuarioRegistrando) {
         SecondRegisterFragment fragment = new SecondRegisterFragment();
         Bundle args = new Bundle();
+        args.putParcelable("user",usuarioRegistrando);
         fragment.setArguments(args);
         return fragment;
     }
@@ -31,6 +33,8 @@ public class SecondRegisterFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       user= getArguments().getParcelable("user");
+        
     }
 
     @Override
@@ -38,8 +42,17 @@ public class SecondRegisterFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register_data, container, false);
         textView=v.findViewById(R.id.textView);
+        textView.setText(getResources().getString(R.string.welcome)+" "+user.getName()+", \n"+getResources().getString(R.string.moreinfo));
         edtMail=v.findViewById(R.id.edT_Mail);
+        edtMail.setText(user.getEmail());
         edtDate=v.findViewById(R.id.edt_Date);
+        edtDate.setText(user.getDate());
+        edtDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.openDialog();
+            }
+        });
         edtDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,6 +64,13 @@ public class SecondRegisterFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, gend);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
+         for(int i=0;spinner.getAdapter().getCount()>i;i++)
+         {
+             if(spinner.getItemAtPosition(i).toString().equals(user.getGender()))
+             {
+                 spinner.setSelection(i);
+             }
+         }
         edtPassword=v.findViewById(R.id.edT_Passw);
         return v;
     }
