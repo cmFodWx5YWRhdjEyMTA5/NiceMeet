@@ -64,10 +64,13 @@ public class RegisterNameFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
+    public void onPause() {
+        super.onPause();
         mListener.setName(edtName.getText().toString());
-        super.onDestroy();
+    }
 
+    public boolean nameCorrect() {
+        return edtName.getText().toString()!="";
     }
 
     public interface OnNameRegisterListener {

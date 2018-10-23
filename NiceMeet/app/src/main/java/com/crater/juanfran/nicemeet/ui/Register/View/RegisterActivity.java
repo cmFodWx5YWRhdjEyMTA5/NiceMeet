@@ -79,6 +79,7 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
     private boolean loadFragment(Fragment fragment,boolean next) {
         if (fragment != null) {
             if(next) {
+                position++;
                 getSupportFragmentManager()
                         .beginTransaction()
                         .setCustomAnimations(R.anim.slide_in_right,R.anim.slide_out_left)
@@ -86,6 +87,7 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
                         .commit();
                 return true;
             }else {
+                position--;
                 getSupportFragmentManager()
                         .beginTransaction()
                         .setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
@@ -150,7 +152,6 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
         usuarioRegistrando.setName(name);
     }
 
-
     @Override
     public void setData(String email, String gender, long date,String password) {
         usuarioRegistrando.setEmail(email);
@@ -186,41 +187,56 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
         usuarioRegistrando.setTags(tags);
     }
 
-
     public void next ()
     {
-        position++;
-        if(position==1) {
+
+        if(position==0&&((RegisterNameFragment)fragment).nameCorrect()) {
             fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
             btnBack.setVisibility(View.VISIBLE);
             btnBack.setEnabled(true);
+            loadFragment(fragment,true);
         }
-        if(position==2)
+        if(position==1) {
             fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando);
+            loadFragment(fragment, true);
+        }
+        if(position==2) {
+            fragment = LastRegisterFragment.newInstance(usuarioRegistrando, tags);
+            loadFragment(fragment, true);
+        }
         if(position==3)
-            fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
-        if(position==4)
+        {
             fragment = ReadyRegisterFragment.newInstance();
+            loadFragment(fragment,true);
+        }
 
-        loadFragment(fragment,true);
+
+
     }
     public void back()
-    {if(position!=0){
-        position--;
-        if(position==0)
+    {
+        if(position!=0){
+        if(position==1)
         {
             fragment=RegisterNameFragment.newInstance(usuarioRegistrando.getName());
             btnBack.setVisibility(View.INVISIBLE);
             btnBack.setEnabled(false);
+            loadFragment(fragment,false);
         }
-        if(position==1)
+        if(position==2) {
             fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
-        if(position==2)
+            loadFragment(fragment,false);
+        }
+        if(position==3) {
             fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando);
-        if(position==3)
-            fragment = LastRegisterFragment.newInstance(usuarioRegistrando,tags);
+            loadFragment(fragment,false);
+        }
+        if(position==4) {
+            fragment = LastRegisterFragment.newInstance(usuarioRegistrando, tags);
+            loadFragment(fragment,false);
+        }
 
-        loadFragment(fragment,false);
+
     }else{
     finish();
     }

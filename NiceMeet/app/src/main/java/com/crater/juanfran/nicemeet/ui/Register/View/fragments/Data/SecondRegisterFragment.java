@@ -48,7 +48,9 @@ public class SecondRegisterFragment extends Fragment {
         edtMail=v.findViewById(R.id.edT_Mail);
         edtMail.setText(user.getEmail());
         edtDate=v.findViewById(R.id.edt_Date);
-        edtDate.setText(user.getDate());
+        if(user.getDate()!="1/0/1970")
+            edtDate.setText(user.getDate());
+
         edtDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,10 +91,9 @@ public class SecondRegisterFragment extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
+    public void onPause() {
+        super.onPause();
         mListener.setData(edtMail.getText().toString(),spinner.getItemAtPosition(spinner.getSelectedItemPosition()).toString(),date,edtPassword.getText().toString());
-        super.onDestroy();
-
     }
 
     public void setDate(long date) {
