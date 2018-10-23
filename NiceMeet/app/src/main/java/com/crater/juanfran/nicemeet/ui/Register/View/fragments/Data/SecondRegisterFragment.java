@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.db.model.User;
 
+import java.util.Calendar;
+
 public class SecondRegisterFragment extends Fragment {
     private OnDataRegisterListener mListener;
     TextView textView;
@@ -47,12 +49,6 @@ public class SecondRegisterFragment extends Fragment {
         edtMail.setText(user.getEmail());
         edtDate=v.findViewById(R.id.edt_Date);
         edtDate.setText(user.getDate());
-        edtDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.openDialog();
-            }
-        });
         edtDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +97,9 @@ public class SecondRegisterFragment extends Fragment {
 
     public void setDate(long date) {
         this.date = date;
+        Calendar data=Calendar.getInstance();
+        data.setTimeInMillis(date);
+        edtDate.setText(data.get(Calendar.DAY_OF_MONTH)+"/"+data.get(Calendar.MONTH)+"/"+data.get(Calendar.YEAR));
     }
 
     public interface OnDataRegisterListener {
