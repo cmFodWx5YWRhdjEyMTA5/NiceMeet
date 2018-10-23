@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class User implements Parcelable {
     private String uid;
@@ -206,7 +207,10 @@ public class User implements Parcelable {
     }
 
     public String getDate() {
-        return String.valueOf(00);
+        Calendar data=Calendar.getInstance();
+        data.setTimeInMillis(date);
+        return data.get(Calendar.DAY_OF_MONTH)+"/"+data.get(Calendar.MONTH)+"/"+data.get(Calendar.YEAR);
+
     }
 
     public void setDate(long date) {
