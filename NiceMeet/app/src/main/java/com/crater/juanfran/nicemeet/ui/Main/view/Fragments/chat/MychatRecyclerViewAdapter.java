@@ -34,7 +34,7 @@ public class MychatRecyclerViewAdapter extends RecyclerView.Adapter<MychatRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.name.setText(mValues.get(position).getNameReciever());
-        holder.lastMessage.setText(mValues.get(position).getListMessageData().get(mValues.size()-1).text);
+      //  holder.lastMessage.setText(mValues.get(position).getListMessageData().get(mValues.size()-1).text);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

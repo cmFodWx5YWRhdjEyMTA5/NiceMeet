@@ -49,7 +49,7 @@ public class ListChatFragment extends Fragment implements MychatRecyclerViewAdap
         list.addItemDecoration(itemDecor);
         ArrayList<Conversation> conversations=new ArrayList<Conversation>();
         Conversation conversation = new Conversation("aa","aa");
-        conversation.getListMessageData().add(new Message("aa","aa","aa",(long)234));
+        //conversation.getListMessageData().add(new Message("aa","aa","aa",(long)234));
         conversations.add(conversation);
         MychatRecyclerViewAdapter adapter= new MychatRecyclerViewAdapter(conversations,this);
         list.setAdapter(adapter);

@@ -47,7 +47,7 @@ public class ChatActivity extends AppCompatActivity {
     private DatabaseReference mFirebaseDatabaseReference;
     private FirebaseRecyclerAdapter<Message, MessageViewHolder> mFirebaseAdapter;
 
-    private ImageButton mSendButton;
+    private Button mSendButton;
     private EditText mMessageEditText;
     private ProgressBar mProgressBar;
     private LinearLayoutManager mLinearLayoutManager;
@@ -64,8 +64,8 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
         mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
         mMessageRecyclerView = findViewById(R.id.messageRecyclerView);
-        mSendButton = findViewById(R.id.btnSend);
-        mMessageEditText=findViewById(R.id.editWriteMessage);
+        mSendButton = findViewById(R.id.sendButton);
+        mMessageEditText=findViewById(R.id.messageEditText);
 
         mSendButton.setOnClickListener(new View.OnClickListener() {
             @Override

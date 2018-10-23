@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class Conversation implements Parcelable {
-    private ArrayList<Message> listMessageData;
+  //  private ArrayList<Message> listMessageData;
     private String uidReciever;
     private String nameReciever;
 
@@ -15,23 +15,23 @@ public class Conversation implements Parcelable {
     }
 
     public Conversation(String uid,String nameReciever){
-        listMessageData = new ArrayList<>();
+      //  listMessageData = new ArrayList<>();
         this.uidReciever=uid;
         this.nameReciever=nameReciever;
     }
 
 
-    public ArrayList<Message> getListMessageData() {
-        return listMessageData;
-    }
+  //  public ArrayList<Message> getListMessageData() {
+   //     return listMessageData;
+   // }
 
     public String getUidReciever() {
         return uidReciever;
     }
 
-    public void setListMessageData(ArrayList<Message> listMessageData) {
-        this.listMessageData = listMessageData;
-    }
+   // public void setListMessageData(ArrayList<Message> listMessageData) {
+     //   this.listMessageData = listMessageData;
+   // }
 
     public void setUidReciever(String uidReciever) {
         this.uidReciever = uidReciever;
