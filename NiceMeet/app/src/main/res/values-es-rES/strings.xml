@@ -59,6 +59,7 @@
     <string name="siguiente">Siguiente</string>
     <string name="date">Fecha Nacimiento</string>
     <string name="gender">Genero</string>
+    <string name="emailvalidateyet">Aun no ha validado su cuenta, entre a su correo y valide su cuenta</string>
 
     <string-array name="genderspn">
         <item>H</item>

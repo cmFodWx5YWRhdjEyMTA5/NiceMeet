@@ -90,8 +90,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.vi
         progressDialog.setVisibility(View.INVISIBLE);
         FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
         sharedPreferences.setCurrentUserName(currentFirebaseUser.getUid());
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
+        if(currentFirebaseUser.isEmailVerified()) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }else {
+            alertDig= DialogsUtils.onErrorDialog(this,getResources().getString(R.string.emailvalidateyet));
+            alertDig.show();
+        }
     }
 
     @Override
