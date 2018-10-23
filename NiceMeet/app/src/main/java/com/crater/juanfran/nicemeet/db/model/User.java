@@ -90,7 +90,24 @@ public class User implements Parcelable {
     }
 
     public User()
-    {}
+    {
+        uid = "";
+        name = "";
+        email = "";
+        avata = "";
+        tags = null;
+        face = "";
+        faceNum = 0;
+        insta = "";
+        instaNum = 0;
+        twitt = "";
+        twittNum = 0;
+        gender = "";
+        date = 0;
+        password = "";
+        languages =null;
+        nation = "";
+    }
 
     public String getPassword() {
         return password;
@@ -188,8 +205,8 @@ public class User implements Parcelable {
         this.twittNum = twittNum;
     }
 
-    public long getDate() {
-        return date;
+    public String getDate() {
+        return String.valueOf(00);
     }
 
     public void setDate(long date) {
