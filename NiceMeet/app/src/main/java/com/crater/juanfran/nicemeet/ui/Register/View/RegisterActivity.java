@@ -21,6 +21,9 @@ import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Name.RegisterName
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Data.SecondRegisterFragment;
 import com.crater.juanfran.nicemeet.utils.ThisApplication;
 import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
+import com.mukesh.countrypicker.Country;
+import com.mukesh.countrypicker.CountryPicker;
+import com.mukesh.countrypicker.OnCountryPickerListener;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -153,11 +156,37 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
     }
 
     @Override
+    public void showEmptyName() {
+
+        Toast.makeText(this,getResources().getString(R.string.nameEmpty),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
     public void setData(String email, String gender, long date,String password) {
         usuarioRegistrando.setEmail(email);
         usuarioRegistrando.setGender(gender);
         usuarioRegistrando.setDate(date);
         usuarioRegistrando.setPassword(password);
+    }
+
+    @Override
+    public void errorEmail() {
+
+    }
+
+    @Override
+    public void errorDate() {
+
+    }
+
+    @Override
+    public void errorMenor() {
+
+    }
+
+    @Override
+    public void errorPassword() {
+
     }
 
     @Override
@@ -179,9 +208,31 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
             }};
 
         DatePickerDialog pickerDialog= new DatePickerDialog(this, myDateListener, year[0], month[0], day[0]);
+        pickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
         pickerDialog.show();
 
     }
+
+    @Override
+    public void emptyMail() {
+
+    }
+
+    @Override
+    public void emptyPass() {
+
+    }
+
+    @Override
+    public void shortPass() {
+
+    }
+
+    @Override
+    public void numberPassword() {
+
+    }
+
     @Override
     public void saveTags(ArrayList<String> tags) {
         usuarioRegistrando.setTags(tags);
@@ -195,15 +246,15 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
             btnBack.setVisibility(View.VISIBLE);
             btnBack.setEnabled(true);
             loadFragment(fragment,true);
-        }
-        if(position==1) {
+        }else
+        if(position==1&&((SecondRegisterFragment)fragment).dataCorrect()) {
             fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando);
             loadFragment(fragment, true);
-        }
+        }else
         if(position==2) {
             fragment = LastRegisterFragment.newInstance(usuarioRegistrando, tags);
             loadFragment(fragment, true);
-        }
+        }else
         if(position==3)
         {
             fragment = ReadyRegisterFragment.newInstance();
@@ -222,15 +273,15 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
             btnBack.setVisibility(View.INVISIBLE);
             btnBack.setEnabled(false);
             loadFragment(fragment,false);
-        }
+        }else
         if(position==2) {
             fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
             loadFragment(fragment,false);
-        }
+        }else
         if(position==3) {
             fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando);
             loadFragment(fragment,false);
-        }
+        }else
         if(position==4) {
             fragment = LastRegisterFragment.newInstance(usuarioRegistrando, tags);
             loadFragment(fragment,false);
@@ -253,4 +304,20 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
         usuarioRegistrando.setLanguages(langs);
         usuarioRegistrando.setNation(nati);
     }
+
+    @Override
+    public void openDialogNL() {
+        CountryPicker.Builder builder =
+                new CountryPicker.Builder().with(this)
+                        .listener(new OnCountryPickerListener() {
+                            @Override
+                            public void onSelectCountry(Country country) {
+                                ((NationLangRegisterFragment)fragment).saveCountry(country);
+                            }
+                        });
+        CountryPicker picker = builder.build();
+
+        picker.showDialog(RegisterActivity.this);
+    }
+
 }

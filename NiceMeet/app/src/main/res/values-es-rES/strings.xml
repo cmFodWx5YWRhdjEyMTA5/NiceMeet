@@ -60,11 +60,12 @@
     <string name="date">Fecha Nacimiento</string>
     <string name="gender">Genero</string>
     <string name="emailvalidateyet">Aun no ha validado su cuenta, entre a su correo y valide su cuenta</string>
+    <string name="almostthere">Solo un poco más,</string>
 
     <string-array name="genderspn">
-        <item>H</item>
-        <item>M</item>
-        <item>NB</item>
+        <item>Hombre</item>
+        <item>Mujer</item>
+        <item>No Binario</item>
         <item>Otro</item>
     </string-array>
 </resources>

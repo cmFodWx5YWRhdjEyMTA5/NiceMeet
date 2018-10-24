@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.Space;
 
 import com.crater.juanfran.nicemeet.R;
 import com.crater.juanfran.nicemeet.ui.Main.view.MainActivity;
@@ -42,10 +43,12 @@ public class SplashActivity extends AppCompatActivity implements SplashContract.
         if (user != null) {
             progressBar.setVisibility(View.VISIBLE);
        //     presenter.obtainLikes(user.getUid());
+            startActivity(new Intent(SplashActivity.this,MainActivity.class));
         } else if (sharedPreferences.getNewUser()) {
             startActivity(new Intent(SplashActivity.this, RegisterActivity.class));
-        }
+        }else {
             startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+        }
         finish();
     }
 

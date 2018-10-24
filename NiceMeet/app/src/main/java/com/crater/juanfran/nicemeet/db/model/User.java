@@ -104,7 +104,7 @@ public class User implements Parcelable {
         twitt = "";
         twittNum = 0;
         gender = "";
-        date = 0;
+        date = Calendar.getInstance().getTimeInMillis();
         password = "";
         languages =null;
         nation = "";
@@ -206,11 +206,15 @@ public class User implements Parcelable {
         this.twittNum = twittNum;
     }
 
-    public String getDate() {
+    public String getDateString() {
         Calendar data=Calendar.getInstance();
         data.setTimeInMillis(date);
         return data.get(Calendar.DAY_OF_MONTH)+"/"+data.get(Calendar.MONTH)+"/"+data.get(Calendar.YEAR);
 
+    }
+    public long getDate()
+    {
+        return date;
     }
 
     public void setDate(long date) {

@@ -59,10 +59,12 @@
     <string name="from">Where are you from?</string>
     <string name="welcome">Welcome</string>
     <string name="moreinfo">continue with the registration before choosing your tags!</string>
+    <string name="nameEmpty">Write your name to continue.</string>
+    <string name="country">Country</string>
     <string-array name="genderspn">
-        <item>M</item>
-        <item>F</item>
-        <item>NB</item>
+        <item>Male</item>
+        <item>Female</item>
+        <item>Non Binary</item>
         <item>Other</item>
     </string-array>
 

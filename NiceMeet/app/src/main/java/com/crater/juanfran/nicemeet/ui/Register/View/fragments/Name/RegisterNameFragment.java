@@ -70,11 +70,20 @@ public class RegisterNameFragment extends Fragment {
     }
 
     public boolean nameCorrect() {
-        return edtName.getText().toString()!="";
+        if(edtName.getText().toString().trim().length() != 0) {
+            return true;
+        }else {
+
+            mListener.showEmptyName();
+            return false;
+        }
+
     }
 
     public interface OnNameRegisterListener {
         void setName(String name);
+
+        void showEmptyName();
     }
 
 }
