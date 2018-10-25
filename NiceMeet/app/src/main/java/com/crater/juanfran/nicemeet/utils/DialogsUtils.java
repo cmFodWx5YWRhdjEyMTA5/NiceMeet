@@ -4,7 +4,6 @@ package com.crater.juanfran.nicemeet.utils;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
-import android.widget.ProgressBar;
 
 import com.crater.juanfran.nicemeet.R;
 
@@ -21,5 +20,18 @@ public class DialogsUtils
             }
         });
         return dialogBuilder;
+    }
+
+    public static AlertDialog.Builder onInfoDialog(Context context, String message) {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(context, R.style.CustomDialogTheme);
+        dialog.setMessage(message);
+        dialog.setCancelable(true);
+        dialog.setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        return dialog;
     }
 }
