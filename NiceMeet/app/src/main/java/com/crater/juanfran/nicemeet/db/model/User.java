@@ -96,7 +96,7 @@ public class User implements Parcelable {
         name = "";
         email = "";
         avata = "";
-        tags = null;
+        tags = new ArrayList<>();
         face = "";
         faceNum = 0;
         insta = "";
@@ -106,7 +106,7 @@ public class User implements Parcelable {
         gender = "";
         date = Calendar.getInstance().getTimeInMillis();
         password = "";
-        languages =null;
+        languages =new ArrayList<>();
         nation = "";
     }
 
