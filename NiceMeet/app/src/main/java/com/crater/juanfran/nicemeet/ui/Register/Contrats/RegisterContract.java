@@ -1,5 +1,7 @@
 package com.crater.juanfran.nicemeet.ui.Register.Contrats;
 
+import com.crater.juanfran.nicemeet.db.model.User;
+
 import java.util.ArrayList;
 
 public interface RegisterContract {
@@ -15,23 +17,20 @@ public interface RegisterContract {
 
         void setTags(String[] tags);
 
-        void setNationLangs(String[] countries, String[] langs);
     }
 
     interface Presenter {
-        void validateCredentials(String password,String passwordAgain, String email);
 
         void getTags();
 
-        void getNationLangs();
+        void saveUser(User usuarioRegistrando);
     }
 
     interface Interactor
     {
-        void signIn( String password,String passwordAgain, String email);
 
         void getTags();
 
-        void getNationLangs();
+        void saveUser(User usuarioRegistrando);
     }
 }

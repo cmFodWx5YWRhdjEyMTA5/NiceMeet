@@ -1,5 +1,6 @@
 package com.crater.juanfran.nicemeet.ui.Register.Presenter;
 
+import com.crater.juanfran.nicemeet.db.model.User;
 import com.crater.juanfran.nicemeet.ui.Register.Contrats.RegisterContract;
 import com.crater.juanfran.nicemeet.ui.Register.Interactor.RegisterInteractor;
 
@@ -16,19 +17,15 @@ public class RegisterPresenter implements RegisterContract.Presenter ,RegisterIn
     }
 
     @Override
-    public void validateCredentials( String password,String passwordAgain, String email) {
-        interactor.signIn(password,passwordAgain,email);
-    }
-
-    @Override
     public void getTags() {
         interactor.getTags();
     }
 
     @Override
-    public void getNationLangs() {
-        interactor.getNationLangs();
+    public void saveUser(User usuarioRegistrando) {
+        interactor.saveUser(usuarioRegistrando);
     }
+
 
     @Override
     public void onSuccess() {
@@ -69,8 +66,4 @@ public class RegisterPresenter implements RegisterContract.Presenter ,RegisterIn
         view.setTags(tags);
     }
 
-    @Override
-    public void setNationLangs(String[] countries, String[] langs) {
-        view.setNationLangs(countries,langs);
-    }
 }
