@@ -142,7 +142,7 @@ public class ChatActivity extends AppCompatActivity {
                                                     .load(downloadUrl)
                                                     .into(viewHolder.messageImageView);
                                         } else {
-                                                    task.getException();
+                                            task.getException();
                                         }
                                     }
                                 });
