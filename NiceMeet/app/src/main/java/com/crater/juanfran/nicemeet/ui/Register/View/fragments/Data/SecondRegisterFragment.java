@@ -148,11 +148,7 @@ public class SecondRegisterFragment extends Fragment {
 
         void errorEmail();
 
-        void errorDate();
-
         void errorMenor();
-
-        void errorPassword();
 
         void openDialog();
 

@@ -61,6 +61,8 @@
     <string name="gender">Genero</string>
     <string name="emailvalidateyet">Aun no ha validado su cuenta, entre a su correo y valide su cuenta</string>
     <string name="almostthere">Solo un poco más,</string>
+    <string name="tagsExplain">¡Ahora puedes elegir tus tags! Debes elegir entre 5 y 15 de los tags ofrecidos. Si hay alguno que te gustaria añadir y ves que no esta, ¡no dudes en comentarmelo! En los ajustes podras abrir la opcion de sugerencias donde podras contarme que te parece el listado y que tags crees que falten.</string>
+    <string name="tooLittleTags">Elige 5 o mas tags</string>
 
     <string-array name="genderspn">
         <item>Hombre</item>

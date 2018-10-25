@@ -19,6 +19,7 @@ import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Tags.LastRegister
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Ready.ReadyRegisterFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Name.RegisterNameFragment;
 import com.crater.juanfran.nicemeet.ui.Register.View.fragments.Data.SecondRegisterFragment;
+import com.crater.juanfran.nicemeet.utils.DialogsUtils;
 import com.crater.juanfran.nicemeet.utils.ThisApplication;
 import com.crater.juanfran.nicemeet.utils.prefs.AppPreferencesHelper;
 import com.mukesh.countrypicker.Country;
@@ -35,7 +36,8 @@ public class RegisterActivity extends AppCompatActivity implements
         RegisterNameFragment.OnNameRegisterListener,
         SecondRegisterFragment.OnDataRegisterListener,
         LastRegisterFragment.OnTagsRegisterListener,
-NationLangRegisterFragment.OnNatioLangRegisterListener{
+NationLangRegisterFragment.OnNatioLangRegisterListener,
+        ReadyRegisterFragment.OnFinishRegisterListener{
 
     RegisterContract.Presenter presenter;
     Button btnNext,btnBack;
@@ -45,8 +47,6 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
     Fragment fragment;
     private AppPreferencesHelper sharedPreferences;
     private String[] tags;
-    private String[] langs;
-    private String[] nations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +65,6 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
         position=0;
         usuarioRegistrando=new User();
         presenter.getTags();
-        presenter.getNationLangs();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,12 +143,6 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
     }
 
     @Override
-    public void setNationLangs(String[] countries, String[] langs) {
-        this.nations= countries;
-        this.langs= langs;
-    }
-
-    @Override
     public void setName(String name) {
         sharedPreferences.setCurrentUserName(name);
         usuarioRegistrando.setName(name);
@@ -171,21 +164,13 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
 
     @Override
     public void errorEmail() {
-
+        Toast.makeText(this,getResources().getString(R.string.error_invalid_email),Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void errorDate() {
-
-    }
 
     @Override
     public void errorMenor() {
-
-    }
-
-    @Override
-    public void errorPassword() {
+        Toast.makeText(this,getResources().getString(R.string.olderthan16),Toast.LENGTH_SHORT).show();
 
     }
 
@@ -215,21 +200,24 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
 
     @Override
     public void emptyMail() {
+        Toast.makeText(this,getResources().getString(R.string.emailEmptyError),Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void emptyPass() {
-
+        Toast.makeText(this,getResources().getString(R.string.passwordEmptyError),Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void shortPass() {
+        Toast.makeText(this,getResources().getString(R.string.shortPassError),Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void numberPassword() {
+        Toast.makeText(this,getResources().getString(R.string.passwordNotNumber),Toast.LENGTH_SHORT).show();
 
     }
 
@@ -238,9 +226,23 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
         usuarioRegistrando.setTags(tags);
     }
 
+    @Override
+    public void openDialogTags() {
+        DialogsUtils.onInfoDialog(this,getResources().getString(R.string.tagsExplain)).show();
+    }
+
+    @Override
+    public void TooMuchTags() {
+        Toast.makeText(this,getResources().getString(R.string.tooMuchTags),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void notEnoughTags() {
+        Toast.makeText(this,getResources().getString(R.string.tooLittleTags),Toast.LENGTH_SHORT).show();
+    }
+
     public void next ()
     {
-
         if(position==0&&((RegisterNameFragment)fragment).nameCorrect()) {
             fragment = SecondRegisterFragment.newInstance(usuarioRegistrando);
             btnBack.setVisibility(View.VISIBLE);
@@ -251,14 +253,15 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
             fragment = NationLangRegisterFragment.newInstance(usuarioRegistrando);
             loadFragment(fragment, true);
         }else
-        if(position==2) {
+        if(position==2&&((NationLangRegisterFragment)fragment).dataCorrect()) {
             fragment = LastRegisterFragment.newInstance(usuarioRegistrando, tags);
             loadFragment(fragment, true);
         }else
-        if(position==3)
+        if(position==3&&((LastRegisterFragment)fragment).dataCorrect())
         {
             fragment = ReadyRegisterFragment.newInstance();
             loadFragment(fragment,true);
+            btnNext.setText(R.string.finish);
         }
 
 
@@ -285,6 +288,7 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
         if(position==4) {
             fragment = LastRegisterFragment.newInstance(usuarioRegistrando, tags);
             loadFragment(fragment,false);
+            btnNext.setText(R.string.siguiente);
         }
 
 
@@ -320,4 +324,8 @@ NationLangRegisterFragment.OnNatioLangRegisterListener{
         picker.showDialog(RegisterActivity.this);
     }
 
+    @Override
+    public void goMain() {
+        presenter.saveUser(usuarioRegistrando);
+    }
 }

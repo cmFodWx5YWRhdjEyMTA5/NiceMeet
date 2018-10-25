@@ -54,4 +54,8 @@
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splashlooks</item>
     </style>
+
+    <style name="CustomDialogTheme">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/background_dialog</item></style>
 </resources>

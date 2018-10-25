@@ -61,6 +61,11 @@
     <string name="moreinfo">continue with the registration before choosing your tags!</string>
     <string name="nameEmpty">Write your name to continue.</string>
     <string name="country">Country</string>
+    <string name="language">Languages</string>
+    <string name="finish">Finish</string>
+    <string name="olderthan16">You need to be 16 years old or older to use this app</string>
+    <string name="shortPassError">Password need to be 6 characters long</string>
+    <string name="tooMuchTags">Elige 15 o menos tags.</string>
     <string-array name="genderspn">
         <item>Male</item>
         <item>Female</item>

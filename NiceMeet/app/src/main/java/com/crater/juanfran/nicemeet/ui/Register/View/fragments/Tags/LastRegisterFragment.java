@@ -25,16 +25,16 @@ public class LastRegisterFragment extends Fragment {
     private String[] tags;
     private ArrayList<String> selectedTags;
     private GridView gridView;
-
+    User usuarioRegistrando;
     public LastRegisterFragment()
     {
         
     }
-
     public static Fragment newInstance(User usuarioRegistrando,String[] tags) {
         LastRegisterFragment fragment = new LastRegisterFragment();
         Bundle args = new Bundle();
         args.putStringArray("tags",tags);
+        args.putParcelable("user",usuarioRegistrando);
         fragment.setArguments(args);
         return fragment;
     }
@@ -43,6 +43,7 @@ public class LastRegisterFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tags=getArguments().getStringArray("tags");
+        usuarioRegistrando=getArguments().getParcelable("user");
         selectedTags = new ArrayList<String>();
     }
 
@@ -50,14 +51,24 @@ public class LastRegisterFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register_tags, container, false);
-        gridView = (GridView) v.findViewById(R.id.gridTags);
+        gridView = v.findViewById(R.id.gridTags);
         fillTags(tags);
+        mListener.openDialogTags();
         return v;
     }
     private void fillTags(final String[] tags)
     {
         this.tags=tags;
         final CustomAdapter adapter = new CustomAdapter((tags));
+        for(int i=0;i<adapter.strings.length;i++)
+        {
+            if(usuarioRegistrando.getTags().contains(adapter.strings[i]))
+            {
+                adapter.selectedPositions.add(i);
+                selectedTags.add(adapter.strings[i]);
+            }
+        }
+
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -75,6 +86,7 @@ public class LastRegisterFragment extends Fragment {
 
             }
         });
+        usuarioRegistrando.getTags().clear();
     }
     @Override
     public void onAttach(Context context) {
@@ -92,16 +104,34 @@ public class LastRegisterFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+@Override
+public void onPause(){
+    super.onPause();
+    mListener.saveTags(selectedTags);
+}
 
-    @Override
-    public void onDestroy() {
-        mListener.saveTags(selectedTags);
-        super.onDestroy();
+    public boolean dataCorrect() {
+        if(selectedTags.size()<5)
+        {
+            mListener.notEnoughTags();
 
+            return false;
+        }else if(selectedTags.size()>15)
+        {
+            mListener.TooMuchTags();
+            return false;
+        }
+        return true;
     }
 
     public interface OnTagsRegisterListener {
         void saveTags(ArrayList<String> tags);
+
+        void openDialogTags();
+
+        void TooMuchTags();
+
+        void notEnoughTags();
     }
 
 
